@@ -1,0 +1,258 @@
+:root {
+  --bg: #fff8e7;
+  --card: #ffffff;
+  --ink: #1f1d36;
+  --accent: #ff6b6b;
+  --accent-2: #ffd166;
+  --accent-3: #06d6a0;
+  --muted: #6b7280;
+  --border: #e8e4d0;
+  --shadow: 0 6px 20px rgba(31, 29, 54, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system,
+    sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+}
+
+header.hero {
+  text-align: center;
+  padding: 16px 0 24px;
+}
+
+header.hero h1 {
+  font-size: 2.2rem;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+header.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.filters {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin: 16px 0 24px;
+  box-shadow: var(--shadow);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  font-weight: 700;
+  margin-right: 8px;
+  align-self: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  min-width: 60px;
+}
+
+.chip {
+  border: 2px solid var(--border);
+  background: var(--card);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  transition: transform 0.05s ease, background 0.15s, border-color 0.15s;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+}
+
+.chip.active {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+.results-meta {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.prank-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.prank-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.prank-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+}
+
+.prank-card .meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.prank-card .desc {
+  margin: 0 0 12px;
+}
+
+.prank-card details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+.prank-card details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.prank-card ol {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.prank-card li {
+  margin-bottom: 4px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tag {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.fav-btn {
+  background: transparent;
+  border: 0;
+  font-size: 1.4rem;
+  padding: 0;
+  margin-left: 8px;
+  float: right;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--muted);
+}
+
+.pledge-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 29, 54, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 50;
+}
+
+.pledge-card {
+  background: var(--card);
+  border-radius: 22px;
+  max-width: 480px;
+  width: 100%;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.pledge-card h2 {
+  margin-top: 0;
+}
+
+.pledge-card ul {
+  padding-left: 20px;
+}
+
+.pledge-card li {
+  margin-bottom: 6px;
+}
+
+.pledge-btn {
+  background: var(--accent-3);
+  color: white;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: 10px 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
