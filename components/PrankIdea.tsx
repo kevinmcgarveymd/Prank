@@ -80,10 +80,20 @@ export function PrankIdea({
 
   return (
     <div className="idea-card">
-      <span className="idea-meta">
-        Ages {current.age_range} · {current.duration_minutes} min ·{" "}
-        {current.category}
-      </span>
+      <div className="idea-top-row">
+        <span className="idea-meta">
+          Ages {current.age_range} · {current.duration_minutes} min ·{" "}
+          {current.category}
+        </span>
+        <button
+          className="refresh-btn"
+          onClick={handleNext}
+          aria-label="Get a new prank"
+          title="Get a new prank"
+        >
+          ↻ New prank
+        </button>
+      </div>
       <h2 className="idea-title">{current.title}</h2>
       <p className="idea-desc">{current.description}</p>
 

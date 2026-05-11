@@ -109,73 +109,8 @@
     box-shadow: 4px 4px 0 var(--pop);
   }
 
-  .member-banner {
-    width: 100%;
-    font-family: 'Bungee', cursive;
-    padding: 14px;
-    border: 4px solid var(--ink);
-    border-radius: 14px;
-    background: linear-gradient(45deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
-    background-size: 200% 200%;
-    animation: shimmer 3s ease-in-out infinite;
-    color: var(--ink);
-    cursor: pointer;
-    text-align: center;
-    font-size: 0.95rem;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow);
-    transition: transform 0.1s, box-shadow 0.1s, padding 0.3s, font-size 0.3s;
-    user-select: none;
-  }
-  .member-banner:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
-  .member-banner:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
-  @keyframes shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
+  .member-banner, body.is-member .member-banner { display: none; }
 
-  body.is-member .member-banner {
-    background: linear-gradient(45deg, #06D6A0 0%, #38A3A5 50%, #06D6A0 100%);
-    background-size: 200% 200%;
-    font-size: 0.8rem;
-    padding: 10px;
-  }
-  .member-banner .unlocked-text { display: none; }
-  body.is-member .member-banner .locked-text { display: none; }
-  body.is-member .member-banner .unlocked-text { display: inline; }
-
-  /* Member-only buttons hidden unless member mode active */
-  body:not(.is-member) .btn[data-member="true"] { display: none; }
-
-  /* Gold accent + VIP tag on member buttons */
-  .btn[data-member="true"] {
-    position: relative;
-    border-color: #DAA520;
-    box-shadow: 6px 6px 0 #DAA520;
-  }
-  .btn[data-member="true"]::after {
-    content: "★";
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: #FFD700;
-    color: var(--ink);
-    font-family: 'Bungee', cursive;
-    font-size: 0.7rem;
-    width: 22px;
-    height: 22px;
-    border: 2px solid var(--ink);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(15deg);
-    animation: starpulse 2s ease-in-out infinite;
-  }
-  @keyframes starpulse {
-    0%, 100% { transform: rotate(15deg) scale(1); }
-    50% { transform: rotate(15deg) scale(1.2); }
-  }
   .tab {
     font-family: 'Bungee', cursive;
     font-size: 0.95rem;
@@ -532,11 +467,6 @@
     <button class="lang" data-lang="zh">🇨🇳 ZH</button>
   </div>
 
-  <button class="member-banner" id="memberBanner" type="button">
-    <span class="locked-text">🔒 UNLOCK MEMBER MODE FOR MORE BUTTONS</span>
-    <span class="unlocked-text">⭐ MEMBER MODE ON · TAP TO LOCK ⭐</span>
-  </button>
-
   <div class="tabs">
     <button class="tab active" data-parent="dad">👨 DAD MODE</button>
     <button class="tab" data-parent="mom">👩 MOM MODE</button>
@@ -721,51 +651,6 @@
       </button>
       <button class="btn btn-51" data-cat="surfer">
         <span class="icon">🏄</span>SURFER DUDE
-      </button>
-      <button class="btn btn-52" data-cat="opera" data-member="true">
-        <span class="icon">🎵</span>OPERA SINGER
-      </button>
-      <button class="btn btn-53" data-cat="unicorn" data-member="true">
-        <span class="icon">🦄</span>UNICORN MAGIC
-      </button>
-      <button class="btn btn-54" data-cat="vampire" data-member="true">
-        <span class="icon">🧛</span>VAMPIRE LORD
-      </button>
-      <button class="btn btn-55" data-cat="clown" data-member="true">
-        <span class="icon">🤡</span>CLOWN CHAOS
-      </button>
-      <button class="btn btn-56" data-cat="royal" data-member="true">
-        <span class="icon">👑</span>ROYAL DECREE
-      </button>
-      <button class="btn btn-57" data-cat="bollywood" data-member="true">
-        <span class="icon">🎬</span>BOLLYWOOD
-      </button>
-      <button class="btn btn-58" data-cat="dragon" data-member="true">
-        <span class="icon">🐲</span>DRAGON ROAR
-      </button>
-      <button class="btn btn-59" data-cat="astronaut" data-member="true">
-        <span class="icon">🚀</span>ASTRONAUT
-      </button>
-      <button class="btn btn-60" data-cat="dinosaur" data-member="true">
-        <span class="icon">🦖</span>DINOSAUR
-      </button>
-      <button class="btn btn-61" data-cat="wizard" data-member="true">
-        <span class="icon">🧙</span>WIZARD
-      </button>
-      <button class="btn btn-62" data-cat="artcritic" data-member="true">
-        <span class="icon">🎨</span>ART CRITIC
-      </button>
-      <button class="btn btn-63" data-cat="luxury" data-member="true">
-        <span class="icon">💎</span>LUXURY VIBES
-      </button>
-      <button class="btn btn-64" data-cat="juggler" data-member="true">
-        <span class="icon">🤹</span>JUGGLER
-      </button>
-      <button class="btn btn-65" data-cat="goth" data-member="true">
-        <span class="icon">🪦</span>GOTH POETRY
-      </button>
-      <button class="btn btn-66" data-cat="random" data-member="true">
-        <span class="icon">🎲</span>RANDOM CHAOS
       </button>
     </div>
     <button class="reset" id="reset">↺ RESET MISSION</button>
@@ -966,11 +851,6 @@
   ]);
   document.querySelectorAll(".btn[data-cat]").forEach(btn => {
     btn.dataset.mode = momButtonCats.has(btn.dataset.cat) ? "mom" : "dad";
-  });
-
-  // Member mode toggle
-  document.getElementById("memberBanner").addEventListener("click", () => {
-    document.body.classList.toggle("is-member");
   });
 
   const fill = document.getElementById("fill");
@@ -1184,40 +1064,21 @@
   });
 
   async function fetchArgs(missionText, cat) {
-    const parentWord = currentParent === "dad" ? "dad" : "mom";
-    const langName = langNames[currentLang];
-    const langClause = currentLang === "en"
-      ? ""
-      : `\n\nIMPORTANT: Write all 5 arguments in ${langName}. Make them feel natural for a kid speaking ${langName} — use age-appropriate slang, phrasing, and cultural references that fit the language. Translate the style description as needed (e.g. "pirate speak" should be the equivalent register in ${langName}).`;
-
-    const prompt = `You are writing for a fun, harmless kids app called "Parent Convincer 3000". Generate 5 short funny one-liner arguments a kid would use to try to convince their ${parentWord} about this mission: "${missionText}".
-
-Style: each argument ${styleHint[cat]}.
-
-Rules:
-- Address or reference "${parentWord.charAt(0).toUpperCase() + parentWord.slice(1)}" naturally where it fits
-- Keep each argument under 25 words
-- Be silly, playful, charming — NEVER mean, rude, or actually disrespectful
-- The kid loves their ${parentWord}; this is loving banter, not real conflict
-- If the mission seems unsafe or harmful, generate gentle silly arguments that wouldn't actually achieve anything${langClause}
-
-Return ONLY a valid JSON array of exactly 5 strings. No preamble, no code fences, no explanation. Just the JSON array.`;
-
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
+    const r = await fetch("/api/convincer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        messages: [{ role: "user", content: prompt }]
+        parent: currentParent,
+        lang: currentLang,
+        mission: missionText,
+        cat,
+        styleHint: styleHint[cat] || "is silly and playful"
       })
     });
     if (!r.ok) throw new Error("API error " + r.status);
     const data = await r.json();
-    const txt = data.content.map(b => b.text || "").join("").replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(txt);
-    if (!Array.isArray(parsed)) throw new Error("not array");
-    return parsed.filter(s => typeof s === "string" && s.length > 0);
+    if (!Array.isArray(data.args) || data.args.length === 0) throw new Error("empty");
+    return data.args;
   }
 
   async function getArg(cat) {

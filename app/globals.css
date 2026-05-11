@@ -393,6 +393,37 @@ header.hero p {
   border-radius: 999px;
 }
 
+.idea-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.idea-top-row .idea-meta { margin: 0; }
+
+.refresh-btn {
+  flex-shrink: 0;
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.refresh-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--border);
+}
+.refresh-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--border);
+}
+
 .idea-title {
   margin: 0 0 14px;
   font-size: 2rem;

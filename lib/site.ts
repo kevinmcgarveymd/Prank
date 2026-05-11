@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "Fun apps by two kids who want to make life better.",
   // Where idea-submission emails are sent. The form opens the
   // user's email client so nothing is collected on our side.
-  ideasEmail: "ideas@buildapps.fun",
+  ideasEmail: "kevinmcgarveymd@gmail.com",
 };
 
 export const KIDS: {

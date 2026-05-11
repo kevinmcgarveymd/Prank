@@ -53,8 +53,8 @@ export default function PranksPage() {
             onClick={() => setMode("prank")}
           >
             <span className="menu-emoji">🎲</span>
-            <span className="menu-title">Surprise me with a prank!</span>
-            <span className="menu-sub">A random kind prank, just for you</span>
+            <span className="menu-title">Prank Generator</span>
+            <span className="menu-sub">Tap refresh for a new kind prank</span>
           </button>
           <button
             className="menu-btn menu-btn-calls"
