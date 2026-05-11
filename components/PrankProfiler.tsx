@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { Prank, PrankCategory, PrankSetting, PrankTarget } from "@/lib/types";
 import { PrankIdea } from "./PrankIdea";
+import { useTranslate } from "@/lib/useTranslate";
 
 type Answers = {
   target: PrankTarget | null;
@@ -58,12 +59,54 @@ export function PrankProfiler({ pranks }: { pranks: Prank[] }) {
       .map((x) => x.p);
   }, [pranks, answers, showResults]);
 
+  const QUESTION_TITLES = [
+    "Who are you pranking?",
+    "Where will this happen?",
+    "How much time do you have?",
+    "What kind of prank vibe?",
+    "How much mess can you handle?",
+  ];
+  const OPTION_LABELS = [
+    "My sibling 👯",
+    "A parent 👨‍👩‍👧",
+    "The whole family 🏠",
+    "Just myself 🪞",
+    "At home 🏡",
+    "At school 🎒",
+    "5 minutes ⚡",
+    "About 15 minutes 🕒",
+    "All afternoon 🎨",
+    ...VIBE_CHOICES.map((v) => v.label),
+    "No mess at all 🧼",
+    "Tiny bit of stuff to clean 🧽",
+    "I can clean anything! 🧹",
+  ];
+  const STATIC = [
+    "🎯 Your top match — based on your answers!",
+    "← Start over",
+    "Question",
+    "of",
+    "← Back",
+  ];
+
+  const { translated } = useTranslate([
+    ...QUESTION_TITLES,
+    ...OPTION_LABELS,
+    ...STATIC,
+  ]);
+  const tQuestions = translated.slice(0, QUESTION_TITLES.length);
+  const tOptions = translated.slice(
+    QUESTION_TITLES.length,
+    QUESTION_TITLES.length + OPTION_LABELS.length,
+  );
+  const [tBanner, tStartOver, tQuestionWord, tOf, tBack] = translated.slice(
+    QUESTION_TITLES.length + OPTION_LABELS.length,
+  );
+
   if (showResults && ranked.length > 0) {
     return (
       <div>
-        <p className="profiler-result-banner">
-          🎯 Your top match — based on your answers!
-        </p>
+        <p className="profiler-result-banner">{tBanner}</p>
         <PrankIdea pranks={ranked} initial={ranked[0]} />
         <button
           className="menu-back"
@@ -80,11 +123,15 @@ export function PrankProfiler({ pranks }: { pranks: Prank[] }) {
             });
           }}
         >
-          ← Start over
+          {tStartOver}
         </button>
       </div>
     );
   }
+
+  // Build options using translated labels but original onPick handlers
+  const vibeStart = 9;
+  const messStart = vibeStart + VIBE_CHOICES.length;
 
   const questions: {
     id: number;
@@ -93,46 +140,46 @@ export function PrankProfiler({ pranks }: { pranks: Prank[] }) {
   }[] = [
     {
       id: 0,
-      title: "Who are you pranking?",
+      title: tQuestions[0],
       options: [
-        { label: "My sibling 👯", onPick: () => set("target", "sibling") },
-        { label: "A parent 👨‍👩‍👧", onPick: () => set("target", "parent") },
-        { label: "The whole family 🏠", onPick: () => set("target", "family") },
-        { label: "Just myself 🪞", onPick: () => set("target", "self") },
+        { label: tOptions[0], onPick: () => set("target", "sibling") },
+        { label: tOptions[1], onPick: () => set("target", "parent") },
+        { label: tOptions[2], onPick: () => set("target", "family") },
+        { label: tOptions[3], onPick: () => set("target", "self") },
       ],
     },
     {
       id: 1,
-      title: "Where will this happen?",
+      title: tQuestions[1],
       options: [
-        { label: "At home 🏡", onPick: () => set("setting", "home") },
-        { label: "At school 🎒", onPick: () => set("setting", "school") },
+        { label: tOptions[4], onPick: () => set("setting", "home") },
+        { label: tOptions[5], onPick: () => set("setting", "school") },
       ],
     },
     {
       id: 2,
-      title: "How much time do you have?",
+      title: tQuestions[2],
       options: [
-        { label: "5 minutes ⚡", onPick: () => set("duration", "short") },
-        { label: "About 15 minutes 🕒", onPick: () => set("duration", "medium") },
-        { label: "All afternoon 🎨", onPick: () => set("duration", "long") },
+        { label: tOptions[6], onPick: () => set("duration", "short") },
+        { label: tOptions[7], onPick: () => set("duration", "medium") },
+        { label: tOptions[8], onPick: () => set("duration", "long") },
       ],
     },
     {
       id: 3,
-      title: "What kind of prank vibe?",
-      options: VIBE_CHOICES.map((v) => ({
-        label: v.label,
+      title: tQuestions[3],
+      options: VIBE_CHOICES.map((v, i) => ({
+        label: tOptions[vibeStart + i],
         onPick: () => set("vibe", v.categories),
       })),
     },
     {
       id: 4,
-      title: "How much mess can you handle?",
+      title: tQuestions[4],
       options: [
-        { label: "No mess at all 🧼", onPick: () => set("mess", "none") },
-        { label: "Tiny bit of stuff to clean 🧽", onPick: () => set("mess", "tiny") },
-        { label: "I can clean anything! 🧹", onPick: () => set("mess", "any") },
+        { label: tOptions[messStart], onPick: () => set("mess", "none") },
+        { label: tOptions[messStart + 1], onPick: () => set("mess", "tiny") },
+        { label: tOptions[messStart + 2], onPick: () => set("mess", "any") },
       ],
     },
   ];
@@ -154,7 +201,7 @@ export function PrankProfiler({ pranks }: { pranks: Prank[] }) {
   return (
     <div className="profiler">
       <p className="profiler-progress">
-        Question {step + 1} of {questions.length}
+        {tQuestionWord} {step + 1} {tOf} {questions.length}
       </p>
       <h2 className="profiler-q">{q.title}</h2>
       <div className="profiler-options">
@@ -170,7 +217,7 @@ export function PrankProfiler({ pranks }: { pranks: Prank[] }) {
           style={{ marginTop: 16 }}
           onClick={() => setStep(step - 1)}
         >
-          ← Back
+          {tBack}
         </button>
       )}
     </div>

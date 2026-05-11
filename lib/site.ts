@@ -14,6 +14,7 @@ export const KIDS: {
   loves: Interest[];
   color: string;
   mascot: "rowan" | "mae";
+  quote: string;
 }[] = [
   {
     name: "Rowan",
@@ -27,6 +28,8 @@ export const KIDS: {
     ],
     color: "var(--accent)",
     mascot: "rowan",
+    quote:
+      "They may make us take vitamins, but they will never take our freedom!",
   },
   {
     name: "Mae",
@@ -40,6 +43,8 @@ export const KIDS: {
     ],
     color: "var(--accent-3)",
     mascot: "mae",
+    quote:
+      "There is not enough laughter in the world. With the prank app, I want to make more people laugh around the world.",
   },
 ];
 

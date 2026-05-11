@@ -7,16 +7,33 @@ import { PrankProfiler } from "@/components/PrankProfiler";
 import { CodeOfHonor } from "@/components/CodeOfHonor";
 import { Mascot } from "@/components/Mascot";
 import { IdeaBox } from "@/components/IdeaBox";
+import { LanguageBar } from "@/components/LanguageBar";
+import { LangProvider } from "@/lib/LangContext";
+import { useTranslate } from "@/lib/useTranslate";
 import { getPublishablePranks, PRANK_CATALOG } from "@/lib/catalog";
 import { bigConfetti } from "@/lib/confetti";
 
 type Mode = "menu" | "prank" | "call" | "profiler";
 
-export default function PranksPage() {
+const STATIC_STRINGS = [
+  "🎉 Prank Lab",
+  "Kind pranks that make everyone laugh.",
+  "Prank Generator",
+  "Tap refresh for a new kind prank",
+  "Surprise me with a prank call!",
+  "A silly script to read out loud",
+  "Find my perfect prank!",
+  "Answer 5 quick questions",
+  "← Back to menu",
+  "Got a kind prank or prank-call script we should add? Tell us!",
+];
+
+function PranksInner() {
   const [mode, setMode] = useState<Mode>("menu");
   const pranks = getPublishablePranks();
   const tapCount = useRef(0);
   const tapTimer = useRef<number | null>(null);
+  const { translated: t } = useTranslate(STATIC_STRINGS);
 
   const handleLogoTap = () => {
     tapCount.current += 1;
@@ -36,14 +53,16 @@ export default function PranksPage() {
         ← buildapps.fun
       </a>
 
+      <LanguageBar />
+
       <header className="hero">
         <div className="hero-mascot">
           <Mascot size={120} />
         </div>
         <h1 onClick={handleLogoTap} style={{ cursor: "pointer" }}>
-          🎉 Prank Lab
+          {t[0]}
         </h1>
-        <p>Kind pranks that make everyone laugh.</p>
+        <p>{t[1]}</p>
       </header>
 
       {mode === "menu" && (
@@ -53,24 +72,24 @@ export default function PranksPage() {
             onClick={() => setMode("prank")}
           >
             <span className="menu-emoji">🎲</span>
-            <span className="menu-title">Prank Generator</span>
-            <span className="menu-sub">Tap refresh for a new kind prank</span>
+            <span className="menu-title">{t[2]}</span>
+            <span className="menu-sub">{t[3]}</span>
           </button>
           <button
             className="menu-btn menu-btn-calls"
             onClick={() => setMode("call")}
           >
             <span className="menu-emoji">📞</span>
-            <span className="menu-title">Surprise me with a prank call!</span>
-            <span className="menu-sub">A silly script to read out loud</span>
+            <span className="menu-title">{t[4]}</span>
+            <span className="menu-sub">{t[5]}</span>
           </button>
           <button
             className="menu-btn menu-btn-profiler"
             onClick={() => setMode("profiler")}
           >
             <span className="menu-emoji">🎯</span>
-            <span className="menu-title">Find my perfect prank!</span>
-            <span className="menu-sub">Answer 5 quick questions</span>
+            <span className="menu-title">{t[6]}</span>
+            <span className="menu-sub">{t[7]}</span>
           </button>
         </section>
       )}
@@ -78,7 +97,7 @@ export default function PranksPage() {
       {mode !== "menu" && (
         <>
           <button className="menu-back" onClick={() => setMode("menu")}>
-            ← Back to menu
+            {t[8]}
           </button>
           {mode === "prank" && <PrankIdea pranks={pranks} />}
           {mode === "call" && (
@@ -88,13 +107,17 @@ export default function PranksPage() {
         </>
       )}
 
-      <IdeaBox
-        topic="prank"
-        prompt="Got a kind prank or prank-call script we should add? Tell us!"
-        emoji="🎉"
-      />
+      <IdeaBox topic="prank" prompt={t[9]} emoji="🎉" />
 
       <CodeOfHonor />
     </main>
+  );
+}
+
+export default function PranksPage() {
+  return (
+    <LangProvider>
+      <PranksInner />
+    </LangProvider>
   );
 }

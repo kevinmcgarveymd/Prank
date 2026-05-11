@@ -41,6 +41,9 @@ export default function Landing() {
                   </li>
                 ))}
               </ul>
+              <blockquote className="kid-quote">
+                &ldquo;{kid.quote}&rdquo;
+              </blockquote>
             </article>
           ))}
         </div>

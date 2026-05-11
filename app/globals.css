@@ -220,6 +220,49 @@ header.hero p {
   margin-bottom: 2px;
 }
 
+.lang-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 18px;
+  justify-content: center;
+}
+.lang-btn {
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 6px 11px;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: var(--card, #fff);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: transform 0.1s, background 0.15s;
+}
+.lang-btn:hover { background: #f3f3f3; }
+.lang-btn.active {
+  background: var(--ink);
+  color: var(--card, #fff);
+  transform: translateY(-1px);
+  box-shadow: 2px 2px 0 var(--accent, #000);
+}
+
+.kid-quote {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  background: var(--accent-5, #fff);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0 var(--border);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--ink);
+  position: relative;
+}
+
 .bio-text {
   background: var(--accent-4);
   border: 3px solid var(--border);

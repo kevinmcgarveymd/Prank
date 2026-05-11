@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import type { PrankCall } from "@/lib/types";
 import { useRatings, RATING_OPTIONS, type Rating } from "@/lib/useRatings";
 import { burstConfetti } from "@/lib/confetti";
+import { useTranslate } from "@/lib/useTranslate";
 
 function pickRandom<T extends { id: number }>(arr: T[], not?: number): T {
   if (arr.length <= 1) return arr[0];
@@ -62,21 +63,40 @@ export function PrankCallIdea({ calls }: { calls: PrankCall[] }) {
     return RATING_OPTIONS.find((o) => o.value === r);
   }, [justRated, previousRating]);
 
+  const items = [
+    current.title,
+    current.script,
+    "📞 Reveal after about",
+    "seconds — only call someone who agreed to be pranked!",
+    "What did you think?",
+    "Your rating:",
+    "Copy script 📋",
+    "Copied! ✅",
+    "Show me another! 🎲",
+  ];
+  const { translated } = useTranslate(items);
+  const [
+    tTitle,
+    tScript,
+    lRevealPre,
+    lRevealPost,
+    lWhat,
+    lYour,
+    lCopy,
+    lCopied,
+    lAnother,
+  ] = translated;
+
   return (
     <div className="idea-card">
       <span className="idea-meta">
-        📞 Reveal after ~{current.reveal_after_seconds} seconds — only call
-        someone who agreed to be pranked!
+        {lRevealPre} {current.reveal_after_seconds} {lRevealPost}
       </span>
-      <h2 className="idea-title">{current.title}</h2>
-      <blockquote className="call-script">
-        &ldquo;{current.script}&rdquo;
-      </blockquote>
+      <h2 className="idea-title">{tTitle}</h2>
+      <blockquote className="call-script">&ldquo;{tScript}&rdquo;</blockquote>
 
       <div className="rating-section">
-        <p className="rating-prompt">
-          {ratedDisplay ? "Your rating:" : "What did you think?"}
-        </p>
+        <p className="rating-prompt">{ratedDisplay ? lYour : lWhat}</p>
         {ratedDisplay ? (
           <div className="rating-confirm">
             <span className="rating-confirm-emoji">{ratedDisplay.emoji}</span>
@@ -100,11 +120,11 @@ export function PrankCallIdea({ calls }: { calls: PrankCall[] }) {
 
         <div className="action-row">
           <button className="copy-btn" onClick={handleCopy}>
-            {copied ? "Copied! ✅" : "Copy script 📋"}
+            {copied ? lCopied : lCopy}
           </button>
           {ratedDisplay && (
             <button className="next-btn" onClick={handleNext}>
-              Show me another! 🎲
+              {lAnother}
             </button>
           )}
         </div>
