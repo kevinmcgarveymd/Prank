@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DAD CONVINCER 3000™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFE74C;
+    --ink: #1a1a1a;
+    --pop: #FF5964;
+    --cool: #38A3A5;
+    --warm: #FF9B42;
+    --speech-bg: #fff8d6;
+    --shadow: 6px 6px 0 var(--ink);
+    --shadow-sm: 3px 3px 0 var(--ink);
+  }
+
+  body.mom-mode {
+    --bg: #F0E5FF;
+    --pop: #B5179E;
+    --cool: #06AED5;
+    --warm: #FF6B9D;
+    --speech-bg: #FFE5F1;
+  }
+
+  body, .speech, .panel {
+    transition: background 0.5s ease, background-color 0.5s ease;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 20px;
+    background-image:
+      radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--pop) 20%, transparent) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--cool) 20%, transparent) 0%, transparent 40%);
+    overflow-x: hidden;
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    font-size: 24px;
+    animation: twirl 4s ease-in-out infinite;
+  }
+  @keyframes twirl {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.3); }
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    justify-content: center;
+  }
+
+  .lang-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+    padding: 4px 2px 8px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lang-bar::-webkit-scrollbar { height: 4px; }
+  .lang-bar::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 4px; }
+  .lang {
+    flex-shrink: 0;
+    font-family: 'Bungee', cursive;
+    font-size: 0.7rem;
+    padding: 7px 11px;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s, background 0.2s;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .lang:hover { background: #f3f3f3; }
+  .lang.active {
+    background: var(--ink);
+    color: var(--bg);
+    transform: translateY(-1px);
+    box-shadow: 4px 4px 0 var(--pop);
+  }
+
+  .member-banner {
+    width: 100%;
+    font-family: 'Bungee', cursive;
+    padding: 14px;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    background: linear-gradient(45deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s, padding 0.3s, font-size 0.3s;
+    user-select: none;
+  }
+  .member-banner:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+  .member-banner:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  body.is-member .member-banner {
+    background: linear-gradient(45deg, #06D6A0 0%, #38A3A5 50%, #06D6A0 100%);
+    background-size: 200% 200%;
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+  .member-banner .unlocked-text { display: none; }
+  body.is-member .member-banner .locked-text { display: none; }
+  body.is-member .member-banner .unlocked-text { display: inline; }
+
+  /* Member-only buttons hidden unless member mode active */
+  body:not(.is-member) .btn[data-member="true"] { display: none; }
+
+  /* Gold accent + VIP tag on member buttons */
+  .btn[data-member="true"] {
+    position: relative;
+    border-color: #DAA520;
+    box-shadow: 6px 6px 0 #DAA520;
+  }
+  .btn[data-member="true"]::after {
+    content: "★";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #FFD700;
+    color: var(--ink);
+    font-family: 'Bungee', cursive;
+    font-size: 0.7rem;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(15deg);
+    animation: starpulse 2s ease-in-out infinite;
+  }
+  @keyframes starpulse {
+    0%, 100% { transform: rotate(15deg) scale(1); }
+    50% { transform: rotate(15deg) scale(1.2); }
+  }
+  .tab {
+    font-family: 'Bungee', cursive;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+    border: 4px solid var(--ink);
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s, background 0.2s;
+    user-select: none;
+  }
+  .tab:first-child { border-radius: 14px 0 0 14px; border-right-width: 2px; }
+  .tab:last-child { border-radius: 0 14px 14px 0; border-left-width: 2px; }
+  .tab.active {
+    background: var(--ink);
+    color: var(--bg);
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 0 var(--pop);
+  }
+  .tab:not(.active):hover { background: #f3f3f3; }
+
+  header {
+    text-align: center;
+    margin-bottom: 24px;
+    transform: rotate(-2deg);
+  }
+
+  h1 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    line-height: 1;
+    color: var(--pop);
+    text-shadow: 4px 4px 0 var(--ink);
+    letter-spacing: 1px;
+  }
+
+  .sub {
+    font-family: 'Bungee', cursive;
+    font-size: 0.9rem;
+    background: var(--ink);
+    color: var(--bg);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    margin-top: 10px;
+    transform: rotate(2deg);
+    border: 3px solid var(--ink);
+  }
+  .mission-text {
+    outline: none;
+    min-width: 40px;
+    cursor: text;
+    border-bottom: 2px dashed transparent;
+    transition: border-color 0.2s;
+  }
+  .mission-text:hover { border-bottom-color: var(--bg); }
+  .mission-text:focus {
+    border-bottom-color: var(--pop);
+    background: rgba(255,89,100,0.3);
+  }
+  .edit-hint {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .panel {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .meter-label {
+    font-family: 'Bungee', cursive;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+
+  .pct {
+    background: var(--pop);
+    color: white;
+    padding: 4px 12px;
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+  }
+
+  .meter {
+    height: 32px;
+    background: #f3f3f3;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .meter-fill {
+    height: 100%;
+    width: 0%;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--pop) 0 12px,
+      var(--warm) 12px 24px
+    );
+    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-right: 3px solid var(--ink);
+  }
+
+  .dad {
+    text-align: center;
+    margin: 16px 0;
+    font-family: 'Bungee', cursive;
+    font-size: 0.95rem;
+  }
+  .dad-face {
+    font-size: 4rem;
+    display: inline-block;
+    transition: transform 0.3s;
+  }
+  .dad-status {
+    background: var(--cool);
+    color: white;
+    padding: 6px 14px;
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: var(--shadow-sm);
+    margin-top: 6px;
+  }
+
+  .speech {
+    background: var(--speech-bg);
+    border: 4px solid var(--ink);
+    border-radius: 18px;
+    padding: 18px 20px;
+    min-height: 90px;
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(-1deg);
+  }
+  .speech::after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 40px;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-top-color: var(--ink);
+  }
+  .speech::before {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 44px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: var(--speech-bg);
+    z-index: 1;
+  }
+
+  .speech.shake {
+    animation: shake 0.4s;
+  }
+  .speech.thinking {
+    color: #888;
+    font-style: italic;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  @keyframes shake {
+    0%, 100% { transform: rotate(-1deg) translateX(0); }
+    25% { transform: rotate(-3deg) translateX(-6px); }
+    75% { transform: rotate(1deg) translateX(6px); }
+  }
+
+  .btn:disabled { opacity: 0.6; cursor: wait; }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  @media (min-width: 600px) {
+    .buttons { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .btn {
+    font-family: 'Bungee', cursive;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    padding: 16px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.2;
+    user-select: none;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+  .btn:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
+
+  .btn .icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+
+  .btn[class*="btn-"] { background: var(--pop); color: white; }
+
+  /* Each parent mode gets its own button set */
+  body:not(.mom-mode) .btn[data-mode="mom"] { display: none; }
+  body.mom-mode .btn[data-mode="dad"] { display: none; }
+
+  .reset {
+    width: 100%;
+    margin-top: 14px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'Bungee', cursive;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .reset:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+  .reset:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
+
+  .victory {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .victory.show { display: flex; animation: fadeIn 0.3s; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .victory-card {
+    background: var(--bg);
+    border: 6px solid var(--ink);
+    border-radius: 24px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 12px 12px 0 var(--pop);
+    max-width: 400px;
+    animation: bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes bounce-in {
+    0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+  .victory-card h2 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 2.5rem;
+    color: var(--pop);
+    text-shadow: 3px 3px 0 var(--ink);
+    margin-bottom: 12px;
+  }
+  .victory-card p {
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  .trophy { font-size: 5rem; display: block; margin-bottom: 8px; animation: spin 2s linear infinite; }
+  @keyframes spin {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .floaty {
+    position: absolute;
+    pointer-events: none;
+    font-family: 'Bungee', cursive;
+    font-size: 1.5rem;
+    color: var(--pop);
+    text-shadow: 2px 2px 0 var(--ink);
+    animation: floatUp 1.2s ease-out forwards;
+    z-index: 50;
+  }
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(0.5); }
+    100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: 'Bungee', cursive;
+    font-size: 0.75rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 12px;
+  }
+  .back-link:hover { background: #f3f3f3; }
+
+  footer {
+    text-align: center;
+    margin-top: 16px;
+    font-family: 'Bungee', cursive;
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars" aria-hidden="true">
+  <span class="star" style="top: 8%; left: 5%; animation-delay: 0s;">✦</span>
+  <span class="star" style="top: 15%; right: 8%; animation-delay: 1s;">★</span>
+  <span class="star" style="top: 60%; left: 3%; animation-delay: 2s;">✦</span>
+  <span class="star" style="top: 75%; right: 4%; animation-delay: 0.5s;">★</span>
+</div>
+
+<div class="wrap">
+  <a href="/" class="back-link">← buildapps.fun</a>
+  <div class="lang-bar" id="langBar">
+    <button class="lang active" data-lang="en">🇬🇧 EN</button>
+    <button class="lang" data-lang="es">🇪🇸 ES</button>
+    <button class="lang" data-lang="fr">🇫🇷 FR</button>
+    <button class="lang" data-lang="de">🇩🇪 DE</button>
+    <button class="lang" data-lang="it">🇮🇹 IT</button>
+    <button class="lang" data-lang="pt">🇧🇷 PT</button>
+    <button class="lang" data-lang="ja">🇯🇵 JA</button>
+    <button class="lang" data-lang="zh">🇨🇳 ZH</button>
+  </div>
+
+  <button class="member-banner" id="memberBanner" type="button">
+    <span class="locked-text">🔒 UNLOCK MEMBER MODE FOR MORE BUTTONS</span>
+    <span class="unlocked-text">⭐ MEMBER MODE ON · TAP TO LOCK ⭐</span>
+  </button>
+
+  <div class="tabs">
+    <button class="tab active" data-parent="dad">👨 DAD MODE</button>
+    <button class="tab" data-parent="mom">👩 MOM MODE</button>
+  </div>
+
+  <header>
+    <h1><span id="parentTitle">DAD</span> CONVINCER<br>3000™</h1>
+    <div class="sub">
+      ⚡ MISSION: <span class="mission-text" id="mission" contenteditable="true" spellcheck="false">NO MORE VITAMINS</span> ⚡
+      <span class="edit-hint" id="editHint" title="Tap mission to change">✏️</span>
+    </div>
+  </header>
+
+  <div class="panel">
+    <div class="meter-label">
+      <span>CONVINCING POWER</span>
+      <span class="pct" id="pct">0%</span>
+    </div>
+    <div class="meter"><div class="meter-fill" id="fill"></div></div>
+
+    <div class="dad">
+      <div class="dad-face" id="dadFace">😐</div>
+      <div><span class="dad-status" id="dadStatus"><span id="parentLabel">DAD</span>: UNCONVINCED</span></div>
+    </div>
+  </div>
+
+  <div class="speech" id="speech">
+    Tap a button to launch your argument! 🎯
+  </div>
+
+  <div class="panel">
+    <div class="buttons">
+      <button class="btn btn-1" data-cat="logic">
+        <span class="icon">🧠</span>BIG BRAIN LOGIC
+      </button>
+      <button class="btn btn-2" data-cat="emotion">
+        <span class="icon">🥺</span>FEELS ATTACK
+      </button>
+      <button class="btn btn-3" data-cat="bargain">
+        <span class="icon">🤝</span>SNEAKY DEAL
+      </button>
+      <button class="btn btn-4" data-cat="drama">
+        <span class="icon">🎭</span>DRAMA MODE
+      </button>
+      <button class="btn btn-5" data-cat="science">
+        <span class="icon">🔬</span>FAKE SCIENCE
+      </button>
+      <button class="btn btn-6" data-cat="dad">
+        <span class="icon">👴</span>DAD JOKE BACK
+      </button>
+      <button class="btn btn-7" data-cat="puppy">
+        <span class="icon">🥹</span>PUPPY EYES
+      </button>
+      <button class="btn btn-8" data-cat="peer">
+        <span class="icon">👯</span>BUT MY FRIENDS
+      </button>
+      <button class="btn btn-9" data-cat="distract">
+        <span class="icon">🎪</span>DISTRACTION
+      </button>
+      <button class="btn btn-10" data-cat="promise">
+        <span class="icon">✨</span>WILD PROMISE
+      </button>
+      <button class="btn btn-11" data-cat="hero">
+        <span class="icon">🦸</span>SUPERPOWER FLEX
+      </button>
+      <button class="btn btn-12" data-cat="legal">
+        <span class="icon">⚖️</span>LEGAL THREAT
+      </button>
+      <button class="btn btn-13" data-cat="future">
+        <span class="icon">🔮</span>FUTURE THREAT
+      </button>
+      <button class="btn btn-14" data-cat="conspiracy">
+        <span class="icon">🕵️</span>CONSPIRACY
+      </button>
+      <button class="btn btn-15" data-cat="reverse">
+        <span class="icon">🔄</span>REVERSE PSYCH
+      </button>
+      <button class="btn btn-16" data-cat="pirate">
+        <span class="icon">🏴‍☠️</span>PIRATE MODE
+      </button>
+      <button class="btn btn-17" data-cat="worldly">
+        <span class="icon">🌍</span>WORLDLY WISE
+      </button>
+      <button class="btn btn-18" data-cat="angel">
+        <span class="icon">😇</span>TIRED ANGEL
+      </button>
+      <button class="btn btn-19" data-cat="rap">
+        <span class="icon">🎤</span>RAP BATTLE
+      </button>
+      <button class="btn btn-20" data-cat="robot">
+        <span class="icon">🤖</span>ROBOT MODE
+      </button>
+      <button class="btn btn-21" data-cat="ghost">
+        <span class="icon">👻</span>GHOST WARNING
+      </button>
+      <button class="btn btn-22" data-cat="magic">
+        <span class="icon">🪄</span>MAGIC SPELL
+      </button>
+      <button class="btn btn-23" data-cat="guilt">
+        <span class="icon">🍪</span>GUILT TRIP
+      </button>
+      <button class="btn btn-24" data-cat="shakespeare">
+        <span class="icon">📜</span>SHAKESPEAREAN
+      </button>
+      <button class="btn btn-25" data-cat="cowboy">
+        <span class="icon">🤠</span>COWBOY
+      </button>
+      <button class="btn btn-26" data-cat="yoda">
+        <span class="icon">💚</span>YODA-SPEAK
+      </button>
+      <button class="btn btn-27" data-cat="detective">
+        <span class="icon">🔍</span>DETECTIVE
+      </button>
+      <button class="btn btn-28" data-cat="chef">
+        <span class="icon">👨‍🍳</span>CHEF MODE
+      </button>
+      <button class="btn btn-29" data-cat="news">
+        <span class="icon">📺</span>NEWS ANCHOR
+      </button>
+      <button class="btn btn-30" data-cat="horror">
+        <span class="icon">🎃</span>HORROR FLICK
+      </button>
+      <button class="btn btn-31" data-cat="philosopher">
+        <span class="icon">💭</span>PHILOSOPHER
+      </button>
+      <button class="btn btn-32" data-cat="math">
+        <span class="icon">🔢</span>MATH PROOF
+      </button>
+      <button class="btn btn-33" data-cat="baby">
+        <span class="icon">👶</span>BABY TALK
+      </button>
+      <button class="btn btn-34" data-cat="grandpa">
+        <span class="icon">🪑</span>GRANDPA RANT
+      </button>
+      <button class="btn btn-35" data-cat="valley">
+        <span class="icon">💅</span>VALLEY GIRL
+      </button>
+      <button class="btn btn-36" data-cat="alien">
+        <span class="icon">👽</span>ALIEN VISITOR
+      </button>
+      <button class="btn btn-37" data-cat="ninja">
+        <span class="icon">🥷</span>NINJA SCROLL
+      </button>
+      <button class="btn btn-38" data-cat="gameshow">
+        <span class="icon">🎰</span>GAME SHOW
+      </button>
+      <button class="btn btn-39" data-cat="infomercial">
+        <span class="icon">📞</span>INFOMERCIAL
+      </button>
+      <button class="btn btn-40" data-cat="coach">
+        <span class="icon">🏆</span>SPORTS COACH
+      </button>
+      <button class="btn btn-41" data-cat="caveman">
+        <span class="icon">🦣</span>CAVEMAN
+      </button>
+      <button class="btn btn-42" data-cat="mob">
+        <span class="icon">🕴️</span>MOB BOSS
+      </button>
+      <button class="btn btn-43" data-cat="haiku">
+        <span class="icon">🎋</span>HAIKU
+      </button>
+      <button class="btn btn-44" data-cat="fortune">
+        <span class="icon">🥠</span>FORTUNE COOKIE
+      </button>
+      <button class="btn btn-45" data-cat="zen">
+        <span class="icon">🧘</span>ZEN MASTER
+      </button>
+      <button class="btn btn-46" data-cat="wrestler">
+        <span class="icon">🤼</span>WRESTLER
+      </button>
+      <button class="btn btn-47" data-cat="fairytale">
+        <span class="icon">🏰</span>FAIRY TALE
+      </button>
+      <button class="btn btn-48" data-cat="nature">
+        <span class="icon">🦒</span>NATURE DOC
+      </button>
+      <button class="btn btn-49" data-cat="existential">
+        <span class="icon">🌌</span>EXISTENTIAL
+      </button>
+      <button class="btn btn-50" data-cat="viking">
+        <span class="icon">⚔️</span>VIKING OATH
+      </button>
+      <button class="btn btn-51" data-cat="surfer">
+        <span class="icon">🏄</span>SURFER DUDE
+      </button>
+      <button class="btn btn-52" data-cat="opera" data-member="true">
+        <span class="icon">🎵</span>OPERA SINGER
+      </button>
+      <button class="btn btn-53" data-cat="unicorn" data-member="true">
+        <span class="icon">🦄</span>UNICORN MAGIC
+      </button>
+      <button class="btn btn-54" data-cat="vampire" data-member="true">
+        <span class="icon">🧛</span>VAMPIRE LORD
+      </button>
+      <button class="btn btn-55" data-cat="clown" data-member="true">
+        <span class="icon">🤡</span>CLOWN CHAOS
+      </button>
+      <button class="btn btn-56" data-cat="royal" data-member="true">
+        <span class="icon">👑</span>ROYAL DECREE
+      </button>
+      <button class="btn btn-57" data-cat="bollywood" data-member="true">
+        <span class="icon">🎬</span>BOLLYWOOD
+      </button>
+      <button class="btn btn-58" data-cat="dragon" data-member="true">
+        <span class="icon">🐲</span>DRAGON ROAR
+      </button>
+      <button class="btn btn-59" data-cat="astronaut" data-member="true">
+        <span class="icon">🚀</span>ASTRONAUT
+      </button>
+      <button class="btn btn-60" data-cat="dinosaur" data-member="true">
+        <span class="icon">🦖</span>DINOSAUR
+      </button>
+      <button class="btn btn-61" data-cat="wizard" data-member="true">
+        <span class="icon">🧙</span>WIZARD
+      </button>
+      <button class="btn btn-62" data-cat="artcritic" data-member="true">
+        <span class="icon">🎨</span>ART CRITIC
+      </button>
+      <button class="btn btn-63" data-cat="luxury" data-member="true">
+        <span class="icon">💎</span>LUXURY VIBES
+      </button>
+      <button class="btn btn-64" data-cat="juggler" data-member="true">
+        <span class="icon">🤹</span>JUGGLER
+      </button>
+      <button class="btn btn-65" data-cat="goth" data-member="true">
+        <span class="icon">🪦</span>GOTH POETRY
+      </button>
+      <button class="btn btn-66" data-cat="random" data-member="true">
+        <span class="icon">🎲</span>RANDOM CHAOS
+      </button>
+    </div>
+    <button class="reset" id="reset">↺ RESET MISSION</button>
+  </div>
+
+  <footer>NOT ACTUALLY MEDICAL ADVICE • LOVE YOUR DAD</footer>
+</div>
+
+<div class="victory" id="victory">
+  <div class="victory-card">
+    <span class="trophy">🏆</span>
+    <h2>VICTORY!</h2>
+    <p id="victoryText">Dad has officially surrendered. Mission accomplished. Use this power wisely.</p>
+    <button class="reset" onclick="resetGame()">PLAY AGAIN</button>
+  </div>
+</div>
+
+<script>
+  const arguments_ = {
+    logic: [
+      "Dad, I already eat fruit. That IS a vitamin. Case closed.",
+      "Statistically, kids who don't take vitamins still grow up. Look it up.",
+      "If vitamins were that important, they'd be free at school.",
+      "I survived all of last week without one. The data speaks.",
+      "Carrots exist. Why are we doing this."
+    ],
+    emotion: [
+      "Every time I take a vitamin, a small piece of my soul leaves my body.",
+      "I had a dream that the vitamin was sad and didn't want me to eat it either.",
+      "When you give me a vitamin... it tastes like betrayal.",
+      "I'm not crying. The vitamin is making my eyes do that.",
+      "Do you even REMEMBER what it was like to be a kid?? 😢"
+    ],
+    bargain: [
+      "I'll eat broccoli. Real broccoli. Not the pretend kind.",
+      "What if I take HALF a vitamin? It's basically the same thing.",
+      "I'll do the dishes for a week. ONE WEEK. Vitamin-free.",
+      "Skip vitamins, I'll skip dessert. Wait. Different deal.",
+      "I'll learn to cook. Just one healthy thing. Anything."
+    ],
+    drama: [
+      "*falls dramatically to the floor* THE GUMMY... IT BURNS...",
+      "If you make me take this vitamin, I will write a memoir about it.",
+      "I'm going to tell my future therapist about this exact moment.",
+      "*stares out window in black and white* ...life used to be simpler...",
+      "ALEXA, PLAY 'IN THE END' BY LINKIN PARK"
+    ],
+    science: [
+      "Did you know? 9 out of 10 dentists hate vitamins. (I made that up but it sounds right.)",
+      "Scientists recently discovered vitamins make you 4% more grumpy. Source: me.",
+      "I read on the internet that sunlight has all the vitamins. I am sunlight-based now.",
+      "New study: kids who don't take vitamins are statistically taller. Probably.",
+      "My body has reached MAXIMUM VITAMIN CAPACITY. Adding more would be unsafe."
+    ],
+    dad: [
+      "Why don't vitamins tell jokes? Because they're not funny. Like this situation.",
+      "Hey Dad, what do you call a vitamin nobody takes? A WIN-tamin.",
+      "Knock knock. Who's there? Not me, taking a vitamin.",
+      "What's a kid's favorite vitamin? Vitamin NOPE.",
+      "I'd take a vitamin but I'm currently on a strict no-pill diet. It's called being seven."
+    ],
+    puppy: [
+      "*tilts head* ...pleeeeease? 🥹",
+      "Look at this face. LOOK AT IT. Could this face take a vitamin?",
+      "I have done nothing but be cute today. Don't I deserve a vitamin-free day?",
+      "*blinks slowly with giant eyes* ...one skip...?",
+      "If you say no I'll just stand here looking sad until further notice."
+    ],
+    peer: [
+      "Jordan's parents don't make THEM take vitamins. Just saying.",
+      "Literally NO ONE at school takes vitamins. I asked. (I asked one kid.)",
+      "My friend Sam said vitamins are 'so 2019.' Sam knows things.",
+      "Cool kids skip vitamins. I learned this on the playground. Trust me.",
+      "Even the teacher doesn't take vitamins and SHE'S an adult."
+    ],
+    distract: [
+      "Dad. DAD. Did you know octopuses have three hearts?",
+      "Wait wait wait — what was your favorite color when you were my age?",
+      "Hey, why is the sky blue? Like, REALLY though. Explain.",
+      "Did you hear that?? I think the dog said something.",
+      "Quick question: if a cow laughs, does milk come out of its nose?"
+    ],
+    promise: [
+      "If I skip the vitamin I PROMISE I'll be a doctor someday. Probably.",
+      "Skip vitamins today and I'll never ask for snacks at the store. (Lie.)",
+      "I will personally invent a better vitamin. Give me 20 years.",
+      "I'll keep my room clean. Forever. (Define 'clean.')",
+      "If I don't take this vitamin, I will rule a small country one day. You'll see."
+    ],
+    hero: [
+      "I don't NEED vitamins. I run on pure determination and fruit snacks.",
+      "My immune system is built different. It eats germs for fun.",
+      "I haven't been sick since like... last Tuesday? That's basically immortality.",
+      "Studies show I'm already 98% awesome. Vitamins would be overkill.",
+      "I have been lifting my backpack for years. I am at peak strength."
+    ],
+    legal: [
+      "I will be contacting my lawyer. Her name is Mom.",
+      "This is a violation of the Geneva Snack Convention.",
+      "I'd like to speak to the manager of this household.",
+      "I'm filing a formal complaint with the United Nations of Kids.",
+      "Article 4, Section 2 of the Kid Code clearly states: NO GUMMIES BEFORE 9AM."
+    ],
+    future: [
+      "20 years from now I'll write a memoir called 'The Vitamin Years.' It will be sad.",
+      "Mark my words: someday you'll wish you hadn't done this. Someday.",
+      "When I'm 30 and famous, this is the part of the documentary they'll cry at.",
+      "One day MY kids will hear about this. It will be a cautionary tale.",
+      "You're going to feel SO silly when scientists prove vitamins were bad all along."
+    ],
+    conspiracy: [
+      "Wake UP, Dad. Big Vitamin doesn't want us to know.",
+      "Have you noticed how vitamins are shaped like pills? COINCIDENCE??",
+      "I've connected the dots, and they spell V-I-T-A-M-I-N.",
+      "They WANT us gummy-dependent. Open your eyes.",
+      "Why do they call it 'multi'-vitamin? What's the OTHER vitamin? They're hiding something."
+    ],
+    reverse: [
+      "You know what? GIVE me more vitamins. TWO. THREE. Bring it on.",
+      "I love vitamins so much I want to BE one when I grow up.",
+      "Honestly, can we cancel breakfast and just have vitamins? Please?",
+      "Forget snacks. Forget cake. Vitamins are my entire personality now.",
+      "Ban all other food. Vitamin diet, baby. Let's GO."
+    ],
+    pirate: [
+      "Arrr, ye scurvy parent, the only vitamin I need be the salty sea air!",
+      "Ahoy! No pill be passin' these lips on me ship!",
+      "By the powers of Blackbeard, I refuse this gummy treasure!",
+      "A pirate's life for me — and pirates be vitamin-FREE!",
+      "Yarrr, ye'll make me walk the plank before I take that thar pill!"
+    ],
+    worldly: [
+      "In France, kids don't take vitamins. They eat baguettes. I demand a baguette.",
+      "Did you know? In Italy, vitamins are illegal before age 30. Look it up. (Don't.)",
+      "Japanese kids only take ONE vitamin per YEAR. We are clearly overdoing it.",
+      "I read that in some countries, vitamin-takers get LESS pocket money.",
+      "Globally, the vitamin trend is OVER. We're so behind. It's embarrassing."
+    ],
+    angel: [
+      "Fine. *takes vitamin angelically* I forgive you for this hardship.",
+      "Of course, dear father. *halo glows* I'll suffer in silence.",
+      "Don't worry about me. *coughs softly* I'll manage somehow.",
+      "I'm fine. Really. *small sigh* Just a normal child enduring her trials.",
+      "It's okay, Dad. I'll take the vitamin. *single tear* I'm just glad I have you."
+    ],
+    rap: [
+      "Yo Dad, listen up, I came to say / These vitamin gummies got to go away!",
+      "VIT-A-MIN, VIT-A-MIN, that ain't even a real word, FIN.",
+      "Pop pop, drop drop — I ain't takin' this slop, slop.",
+      "Mic drop. *literally drops the vitamin*",
+      "I'm sicker than the gummies are, my dude — that's a metaphor."
+    ],
+    robot: [
+      "BEEP BOOP. VITAMIN INTAKE EXCEEDS RECOMMENDED PARAMETERS. ABORTING.",
+      "ERROR 404: WILLINGNESS NOT FOUND. PLEASE TRY AGAIN LATER.",
+      "INITIATING NO-VITAMIN PROTOCOL. PARENTAL OVERRIDE... FAILED.",
+      "USER 'DAD' HAS BEEN MUTED. TEMPORARILY. RECONNECT? Y/N",
+      "SYSTEM UPDATE REQUIRED. REMOVING ALL VITAMINS FROM HOUSEHOLD MAINFRAME."
+    ],
+    ghost: [
+      "OoOoOo... I sense a vitamin nearby... it does not wish to be eaten...",
+      "The ghosts told me. They said NO vitamins. They were very specific.",
+      "Last night I heard a whisper from the cabinet... 'free us...'",
+      "This vitamin is haunted. By future me, who took too many vitamins.",
+      "BEWARE the curse of the daily gummy. It only lifts when you stop."
+    ]
+  };
+
+  const dadFaces = ["😐", "🤨", "😬", "😅", "😰", "🥲", "😵‍💫", "🫠"];
+  const dadStatuses = [
+    "UNCONVINCED",
+    "SLIGHTLY AMUSED",
+    "RAISING EYEBROW",
+    "STARTING TO CRACK",
+    "GETTING TIRED",
+    "ON THE ROPES",
+    "ALMOST DEFEATED",
+    "BREAKING POINT"
+  ];
+
+  let currentParent = "dad";
+  const state = {
+    dad: { power: 0 },
+    mom: { power: 0 }
+  };
+
+  // Split the buttons between modes
+  const momButtonCats = new Set([
+    "logic", "bargain", "science", "puppy", "distract",
+    "hero", "future", "reverse", "worldly", "rap",
+    "ghost", "guilt", "cowboy", "detective", "news",
+    "philosopher", "baby", "valley", "ninja", "infomercial",
+    "caveman", "haiku", "zen", "fairytale", "existential",
+    "surfer",
+    // Member-mode mom-side
+    "opera", "unicorn", "clown", "bollywood", "astronaut",
+    "artcritic", "juggler", "goth"
+  ]);
+  document.querySelectorAll(".btn[data-cat]").forEach(btn => {
+    btn.dataset.mode = momButtonCats.has(btn.dataset.cat) ? "mom" : "dad";
+  });
+
+  // Member mode toggle
+  document.getElementById("memberBanner").addEventListener("click", () => {
+    document.body.classList.toggle("is-member");
+  });
+
+  const fill = document.getElementById("fill");
+  const pct = document.getElementById("pct");
+  const speech = document.getElementById("speech");
+  const dadFace = document.getElementById("dadFace");
+  const dadStatus = document.getElementById("dadStatus");
+  const parentLabel = document.getElementById("parentLabel");
+  const parentTitle = document.getElementById("parentTitle");
+  const victory = document.getElementById("victory");
+
+  function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function adaptForParent(text) {
+    if (currentParent === "mom") {
+      return text
+        .replace(/\bDad\b/g, "Mom")
+        .replace(/\bdad\b/g, "mom");
+    }
+    return text;
+  }
+
+  function parentName() {
+    return currentParent === "dad" ? "DAD" : "MOM";
+  }
+
+  function updateDad() {
+    const power = state[currentParent].power;
+    const idx = Math.min(Math.floor(power / 12.5), 7);
+    dadFace.textContent = dadFaces[idx];
+    dadStatus.innerHTML = `<span id="parentLabel">${parentName()}</span>: ${dadStatuses[idx]}`;
+    dadFace.style.transform = `scale(${1 + power/300}) rotate(${(Math.random()-0.5)*10}deg)`;
+  }
+
+  function renderTab() {
+    const power = state[currentParent].power;
+    fill.style.width = power + "%";
+    pct.textContent = power + "%";
+    parentTitle.textContent = parentName();
+    updateDad();
+    if (power === 0) {
+      speech.textContent = `Tap a button to launch your argument at ${parentName()}! 🎯`;
+    }
+  }
+
+  // Tab switching
+  const dadDeco = ["✦", "★", "✦", "★"];
+  const momDeco = ["❀", "✿", "❀", "✿"];
+
+  function applyMode() {
+    document.body.classList.toggle("mom-mode", currentParent === "mom");
+    const stars = document.querySelectorAll("#stars .star");
+    const set = currentParent === "mom" ? momDeco : dadDeco;
+    stars.forEach((s, i) => s.textContent = set[i] || s.textContent);
+  }
+
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      currentParent = tab.dataset.parent;
+      applyMode();
+      renderTab();
+    });
+  });
+
+  function popFloaty(target, text) {
+    const r = target.getBoundingClientRect();
+    const f = document.createElement("div");
+    f.className = "floaty";
+    f.textContent = text;
+    f.style.left = (r.left + r.width/2) + "px";
+    f.style.top = (r.top + 10) + "px";
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 1200);
+  }
+
+  const mission = document.getElementById("mission");
+  const editHint = document.getElementById("editHint");
+  const victoryText = document.getElementById("victoryText");
+
+  editHint.addEventListener("click", () => {
+    mission.focus();
+    // select all the text inside
+    const range = document.createRange();
+    range.selectNodeContents(mission);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+
+  mission.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      mission.blur();
+    }
+  });
+
+  mission.addEventListener("blur", () => {
+    let txt = mission.textContent.trim().toUpperCase();
+    if (!txt) txt = "NO MORE VITAMINS";
+    mission.textContent = txt;
+  });
+
+  function getMission() {
+    return mission.textContent.trim() || "NO MORE VITAMINS";
+  }
+
+  // Style hint for each category, used in API prompt
+  const styleHint = {
+    logic: "uses logical / rational / pseudo-factual arguments",
+    emotion: "is wildly emotional and dramatic about feelings",
+    bargain: "offers a trade or deal",
+    drama: "is theatrically over-the-top, sometimes with *stage directions* in asterisks",
+    science: "cites silly invented 'science' studies or made-up statistics",
+    dad: "is itself a dad-joke or pun",
+    puppy: "is cute puppy-dog-eyes begging, sometimes with *cute actions* in asterisks",
+    peer: "compares to friends or other kids' parents",
+    distract: "tries to suddenly change the subject with random kid-questions",
+    promise: "makes wild improbable promises",
+    hero: "brags about already being awesome / having superpowers / not needing help",
+    legal: "makes fake legal-sounding or official-sounding threats",
+    future: "predicts dramatic future regret or warns about how this will look in retrospect",
+    conspiracy: "makes silly tinfoil-hat conspiracy claims about the topic",
+    reverse: "uses reverse psychology — enthusiastically demanding MORE of the thing they don't want",
+    pirate: "is delivered entirely in over-the-top pirate speak (arrr, ye, scurvy, etc.)",
+    worldly: "claims fake international facts about how 'in other countries' things are different",
+    angel: "is martyr-like, saintly, suffering silently with *halo glows* / *coughs softly* / *single tear* style stage directions",
+    rap: "is delivered as a short rap verse — rhyming, with rhythm and swagger",
+    robot: "is delivered in ALL CAPS robot/computer speak with words like BEEP BOOP, ERROR, INITIATING, ABORT, SYSTEM, etc.",
+    ghost: "is spooky/paranormal — references ghosts, curses, whispers, hauntings, omens",
+    magic: "is delivered as a magical incantation with rhyming words and abracadabra-style spell language",
+    guilt: "is a classic guilt trip listing all the things the kid has done for the parent",
+    shakespeare: "is in Shakespearean / olde English with thee, thou, hast, prithee, forsooth",
+    cowboy: "is in cowboy / Western drawl with howdy, partner, yonder, reckon, ain't",
+    yoda: "uses Yoda-style reversed grammar — object-subject-verb",
+    detective: "is in noir detective style — gumshoe, dame, the case, evidence, see",
+    chef: "uses cooking and culinary metaphors throughout",
+    news: "is delivered as breaking news anchor-speak with formal news clichés",
+    horror: "uses horror movie tropes with *footsteps in the hallway* style stage directions",
+    philosopher: "poses deep philosophical questions and existential ponderings about the topic",
+    math: "presents the argument as a formal mathematical proof — let X be, therefore, QED",
+    baby: "is in goo-goo ga-ga baby talk with regressive infantile phrasing",
+    grandpa: "is a back-in-my-day grandpa rant with old-timey complaints",
+    valley: "is in Valley Girl speak — like, totally, OMG, whatever",
+    alien: "is from a clueless alien visitor learning earth customs ('humans of Earth, greetings')",
+    ninja: "is whispered ancient ninja-scroll wisdom with stealthy, mysterious tone",
+    gameshow: "is delivered like an over-enthusiastic game show host announcement",
+    infomercial: "is in infomercial pitch style — 'But wait, there's MORE!' — with exclamation points",
+    coach: "is a halftime sports-coach pep talk — locker-room, fired-up, 'we got this'",
+    caveman: "is in primitive caveman grunt speech — 'me no want', 'fire bad'",
+    mob: "is in mob boss / mafia don voice — capisce, fuhgeddaboudit, you talkin' to me",
+    haiku: "is a literal haiku in 5-7-5 syllable form, with the three lines separated by ' / ' (slashes)",
+    fortune: "is a mystical fortune cookie prediction, optionally with '...in bed' style ambiguous tags",
+    zen: "is calm zen-master wisdom — koan-like, peaceful, slightly absurd",
+    wrestler: "is over-the-top WWE wrestling promo trash talk IN ALL CAPS shouting",
+    fairytale: "begins with 'Once upon a time' and is told as a tiny fairy tale",
+    nature: "is in David-Attenborough-style nature documentary narration",
+    existential: "is darkly existential about the absurdity of the human condition",
+    viking: "is a fierce viking oath — 'by Odin's beard', 'to Valhalla', 'we sail at dawn'",
+    surfer: "is in beach-bro surfer dude speak — dude, totally, gnarly, bummer, righteous",
+    opera: "is delivered as a dramatic operatic aria with sung 'la la la~' interjections, *vibrato*, fortissimo flourishes",
+    unicorn: "is in mystical sparkly unicorn-magic talk — rainbows, pure of heart, ancient unicorn law, *sparkles*",
+    vampire: "is gothic vampire-lord menace with Transylvanian accent — 'I vant', 'children of the night', mwahaha",
+    clown: "is in chaotic clown logic — honk-honk, big shoes, balloon-animal references, *slips on banana peel*",
+    royal: "is imperious royal-decree style — 'We are not amused', 'by royal proclamation', regal authority",
+    bollywood: "is in Bollywood-drama style with family honor, *thunder crack*, dance-sequence references, big emotions",
+    dragon: "is an ancient dragon's wisdom — hoarding metaphors, eons of experience, 'foolish mortal'",
+    astronaut: "is in NASA mission-control speak — T-minus, copy that, 'Houston we have a problem', over",
+    dinosaur: "is from a dinosaur's perspective — 'back when I was alive', stomp stomp, asteroid-related complaints",
+    wizard: "is wizardly arcane wisdom — 'by the runes', 'as foretold', 'the ancient prophecy speaks'",
+    artcritic: "is in pretentious art-critic voice — dripping with disdain, references to oeuvre, juxtaposition, pedestrian",
+    luxury: "is luxury-influencer speak — 'literal must', 'obsessed', 'iconic', 'a vibe', 'so chic'",
+    juggler: "is in circus juggler patter — 'and now, before your very eyes!', 'step right up!', performative",
+    goth: "is dark goth verse — ravens, eternal night, withered thorns, the void calls, melancholy",
+    random: "is completely unhinged non-sequitur randomness — wildly off-topic, surreal, barely makes sense"
+  };
+
+  // Cache: key = `${parent}|${lang}|${mission}|${cat}` -> array of unused arguments
+  const argCache = {};
+  const loadingKeys = new Set();
+
+  // Language state
+  const langNames = {
+    en: "English",
+    es: "Spanish",
+    fr: "French",
+    de: "German",
+    it: "Italian",
+    pt: "Portuguese",
+    ja: "Japanese",
+    zh: "Simplified Mandarin Chinese"
+  };
+  let currentLang = "en";
+
+  document.querySelectorAll(".lang").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".lang").forEach(l => l.classList.remove("active"));
+      btn.classList.add("active");
+      currentLang = btn.dataset.lang;
+    });
+  });
+
+  // Seed default DAD mission with hardcoded English arguments
+  const DEFAULT_MISSION = "NO MORE VITAMINS";
+  Object.keys(arguments_).forEach(cat => {
+    argCache[`dad|en|${DEFAULT_MISSION}|${cat}`] = [...arguments_[cat]];
+    argCache[`mom|en|${DEFAULT_MISSION}|${cat}`] = arguments_[cat].map(s =>
+      s.replace(/\bDad\b/g, "Mom").replace(/\bdad\b/g, "mom")
+    );
+  });
+
+  async function fetchArgs(missionText, cat) {
+    const parentWord = currentParent === "dad" ? "dad" : "mom";
+    const langName = langNames[currentLang];
+    const langClause = currentLang === "en"
+      ? ""
+      : `\n\nIMPORTANT: Write all 5 arguments in ${langName}. Make them feel natural for a kid speaking ${langName} — use age-appropriate slang, phrasing, and cultural references that fit the language. Translate the style description as needed (e.g. "pirate speak" should be the equivalent register in ${langName}).`;
+
+    const prompt = `You are writing for a fun, harmless kids app called "Parent Convincer 3000". Generate 5 short funny one-liner arguments a kid would use to try to convince their ${parentWord} about this mission: "${missionText}".
+
+Style: each argument ${styleHint[cat]}.
+
+Rules:
+- Address or reference "${parentWord.charAt(0).toUpperCase() + parentWord.slice(1)}" naturally where it fits
+- Keep each argument under 25 words
+- Be silly, playful, charming — NEVER mean, rude, or actually disrespectful
+- The kid loves their ${parentWord}; this is loving banter, not real conflict
+- If the mission seems unsafe or harmful, generate gentle silly arguments that wouldn't actually achieve anything${langClause}
+
+Return ONLY a valid JSON array of exactly 5 strings. No preamble, no code fences, no explanation. Just the JSON array.`;
+
+    const r = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    if (!r.ok) throw new Error("API error " + r.status);
+    const data = await r.json();
+    const txt = data.content.map(b => b.text || "").join("").replace(/```json|```/g, "").trim();
+    const parsed = JSON.parse(txt);
+    if (!Array.isArray(parsed)) throw new Error("not array");
+    return parsed.filter(s => typeof s === "string" && s.length > 0);
+  }
+
+  async function getArg(cat) {
+    const m = getMission();
+    const key = `${currentParent}|${currentLang}|${m}|${cat}`;
+    if (!argCache[key] || argCache[key].length === 0) {
+      if (loadingKeys.has(key)) return null;
+      loadingKeys.add(key);
+      try {
+        argCache[key] = await fetchArgs(m, cat);
+      } catch (e) {
+        console.error(e);
+        argCache[key] = [
+          "Hmm, my brain is buffering. Try another button!",
+          "I had an argument ready but I forgot it. Classic me."
+        ];
+      }
+      loadingKeys.delete(key);
+    }
+    const i = Math.floor(Math.random() * argCache[key].length);
+    return argCache[key].splice(i, 1)[0];
+  }
+
+  // Clear cache for non-default missions when mission changes
+  let lastMission = getMission();
+  mission.addEventListener("blur", () => {
+    const newM = getMission();
+    if (newM !== lastMission) {
+      Object.keys(argCache).forEach(k => {
+        if (!k.includes(`|${DEFAULT_MISSION}|`)) delete argCache[k];
+      });
+      lastMission = newM;
+    }
+  });
+
+  document.querySelectorAll(".btn[data-cat]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const cat = btn.dataset.cat;
+      const key = `${currentParent}|${currentLang}|${getMission()}|${cat}`;
+      const willLoad = !argCache[key] || argCache[key].length === 0;
+
+      if (willLoad) {
+        speech.textContent = "🤔 thinking up an argument...";
+        speech.classList.remove("shake");
+        speech.classList.add("thinking");
+        btn.disabled = true;
+      }
+
+      const line = await getArg(cat);
+      btn.disabled = false;
+      speech.classList.remove("thinking");
+
+      if (!line) return;
+
+      speech.textContent = line;
+      void speech.offsetWidth;
+      speech.classList.add("shake");
+
+      const boost = Math.floor(Math.random() * 8) + 8;
+      state[currentParent].power = Math.min(100, state[currentParent].power + boost);
+      const power = state[currentParent].power;
+      fill.style.width = power + "%";
+      pct.textContent = power + "%";
+      pct.style.transform = "scale(1.3)";
+      setTimeout(() => pct.style.transform = "scale(1)", 200);
+
+      popFloaty(btn, "+" + boost);
+      updateDad();
+
+      if (power >= 100) {
+        victoryText.textContent = `${parentName()} has officially surrendered. "${getMission()}" — mission accomplished! Use this power wisely.`;
+        setTimeout(() => victory.classList.add("show"), 600);
+      }
+    });
+  });
+
+  document.getElementById("reset").addEventListener("click", resetGame);
+
+  function resetGame() {
+    state[currentParent].power = 0;
+    fill.style.width = "0%";
+    pct.textContent = "0%";
+    speech.textContent = `Tap a button to launch your argument at ${parentName()}! 🎯`;
+    victory.classList.remove("show");
+    updateDad();
+  }
+
+  // Initial render
+  applyMode();
+  renderTab();
+</script>
+
+</body>
+</html>
