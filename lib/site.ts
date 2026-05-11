@@ -3,6 +3,9 @@ type Interest = { label: string; icon: string };
 export const SITE = {
   name: "buildapps.fun",
   tagline: "Fun apps by two kids who want to make life better.",
+  // Where idea-submission emails are sent. The form opens the
+  // user's email client so nothing is collected on our side.
+  ideasEmail: "ideas@buildapps.fun",
 };
 
 export const KIDS: {

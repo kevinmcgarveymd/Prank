@@ -1,6 +1,7 @@
 import { SITE, KIDS, APPS } from "@/lib/site";
 import { Mascot } from "@/components/Mascot";
 import { CodeOfHonor } from "@/components/CodeOfHonor";
+import { IdeaBox } from "@/components/IdeaBox";
 
 export default function Landing() {
   return (
@@ -66,6 +67,12 @@ export default function Landing() {
           ))}
         </div>
       </section>
+
+      <IdeaBox
+        topic="new app"
+        prompt="Tell Rowan and Mae what fun app to build next."
+        emoji="🚀"
+      />
 
       <CodeOfHonor />
 

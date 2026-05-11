@@ -6,6 +6,7 @@ import { PrankCallIdea } from "@/components/PrankCallIdea";
 import { PrankProfiler } from "@/components/PrankProfiler";
 import { CodeOfHonor } from "@/components/CodeOfHonor";
 import { Mascot } from "@/components/Mascot";
+import { IdeaBox } from "@/components/IdeaBox";
 import { getPublishablePranks, PRANK_CATALOG } from "@/lib/catalog";
 import { bigConfetti } from "@/lib/confetti";
 
@@ -86,6 +87,12 @@ export default function PranksPage() {
           {mode === "profiler" && <PrankProfiler pranks={pranks} />}
         </>
       )}
+
+      <IdeaBox
+        topic="prank"
+        prompt="Got a kind prank or prank-call script we should add? Tell us!"
+        emoji="🎉"
+      />
 
       <CodeOfHonor />
     </main>
