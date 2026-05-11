@@ -35,7 +35,7 @@ export const APPS = [
     title: "Dad Convincer 3000™",
     emoji: "🧠",
     blurb:
-      "Tap big silly buttons to launch arguments at Dad (or Mom). 66+ styles — pirate, rap, robot, dragon, and more — in 8 languages.",
+      "Tap big silly buttons to launch arguments at Dad (or Mom). 66+ styles — pirate, rap, robot, dragon, and more — in 8 languages. (Rowan's idea.)",
     href: "/dad-convincer/",
     status: "live",
   },
