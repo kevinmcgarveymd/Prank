@@ -148,35 +148,72 @@
     letter-spacing: 1px;
   }
 
-  .sub {
+  .mission-panel {
+    background: white;
+    border: 4px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 18px 18px 16px;
+    margin: 16px 0 20px;
+    text-align: center;
+  }
+  .mission-label {
     font-family: 'Bungee', cursive;
     font-size: 0.9rem;
     background: var(--ink);
     color: var(--bg);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    margin-top: 10px;
-    transform: rotate(2deg);
+    display: inline-block;
+    padding: 5px 14px;
     border: 3px solid var(--ink);
+    margin-bottom: 14px;
+    transform: rotate(-1deg);
   }
-  .mission-text {
+  .mission-input {
+    width: 100%;
+    font-family: 'Bungee', cursive;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    padding: 14px 16px;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    background: var(--speech-bg);
+    color: var(--ink);
+    resize: vertical;
+    min-height: 80px;
     outline: none;
-    min-width: 40px;
-    cursor: text;
-    border-bottom: 2px dashed transparent;
-    transition: border-color 0.2s;
+    box-shadow: inset 3px 3px 0 rgba(0,0,0,0.08);
+    text-transform: uppercase;
   }
-  .mission-text:hover { border-bottom-color: var(--bg); }
-  .mission-text:focus {
-    border-bottom-color: var(--pop);
-    background: rgba(255,89,100,0.3);
+  .mission-input:focus {
+    border-color: var(--pop);
+    box-shadow: inset 3px 3px 0 rgba(0,0,0,0.08), 0 0 0 4px rgba(255,89,100,0.25);
   }
-  .edit-hint {
-    font-size: 0.7rem;
+  .mission-current {
+    font-family: 'Bungee', cursive;
+    font-size: 0.85rem;
+    color: var(--ink);
     opacity: 0.7;
+    margin-top: 10px;
+  }
+  .start-btn {
+    margin-top: 12px;
+    background: var(--pop);
+    color: white;
+    font-family: 'Bungee', cursive;
+    font-size: 1rem;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    padding: 12px 24px;
     cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .start-btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+  .start-btn:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
+  .start-btn.flash { animation: flashGreen 0.6s ease; }
+  @keyframes flashGreen {
+    0%, 100% { background: var(--pop); }
+    50% { background: #06D6A0; }
   }
 
   .panel {
@@ -474,11 +511,22 @@
 
   <header>
     <h1><span id="parentTitle">DAD</span> CONVINCER<br>3000™</h1>
-    <div class="sub">
-      ⚡ MISSION: <span class="mission-text" id="mission" contenteditable="true" spellcheck="false">NO MORE VITAMINS</span> ⚡
-      <span class="edit-hint" id="editHint" title="Tap mission to change">✏️</span>
-    </div>
   </header>
+
+  <div class="mission-panel">
+    <div class="mission-label">⚡ YOUR MISSION ⚡</div>
+    <textarea
+      id="missionInput"
+      class="mission-input"
+      rows="2"
+      maxlength="160"
+      spellcheck="false"
+      placeholder="WHAT DO YOU WANT TO CONVINCE THEM OF?">NO MORE VITAMINS</textarea>
+    <div>
+      <button id="startBtn" class="start-btn" type="button">🚀 START MISSION</button>
+    </div>
+    <div class="mission-current">Active mission: <span id="missionDisplay">NO MORE VITAMINS</span></div>
+  </div>
 
   <div class="panel">
     <div class="meter-label">
@@ -928,36 +976,42 @@
     setTimeout(() => f.remove(), 1200);
   }
 
-  const mission = document.getElementById("mission");
-  const editHint = document.getElementById("editHint");
+  const missionInput = document.getElementById("missionInput");
+  const missionDisplay = document.getElementById("missionDisplay");
+  const startBtn = document.getElementById("startBtn");
   const victoryText = document.getElementById("victoryText");
 
-  editHint.addEventListener("click", () => {
-    mission.focus();
-    // select all the text inside
-    const range = document.createRange();
-    range.selectNodeContents(mission);
-    const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-  });
-
-  mission.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      mission.blur();
-    }
-  });
-
-  mission.addEventListener("blur", () => {
-    let txt = mission.textContent.trim().toUpperCase();
-    if (!txt) txt = "NO MORE VITAMINS";
-    mission.textContent = txt;
-  });
+  let activeMission = "NO MORE VITAMINS";
 
   function getMission() {
-    return mission.textContent.trim() || "NO MORE VITAMINS";
+    return activeMission;
   }
+
+  function startMission() {
+    let txt = missionInput.value.trim().toUpperCase();
+    if (!txt) txt = "NO MORE VITAMINS";
+    missionInput.value = txt;
+    activeMission = txt;
+    missionDisplay.textContent = txt;
+    if (typeof maybeClearCache === "function") maybeClearCache();
+    startBtn.classList.remove("flash");
+    void startBtn.offsetWidth;
+    startBtn.classList.add("flash");
+    state[currentParent].power = 0;
+    fill.style.width = "0%";
+    pct.textContent = "0%";
+    speech.textContent = `Mission set: "${txt}". Tap a button to launch your first argument! 🎯`;
+    updateDad();
+  }
+
+  startBtn.addEventListener("click", startMission);
+
+  missionInput.addEventListener("keydown", e => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      startMission();
+    }
+  });
 
   // Style hint for each category, used in API prompt
   const styleHint = {
@@ -1085,26 +1139,24 @@
     const m = getMission();
     const key = `${currentParent}|${currentLang}|${m}|${cat}`;
     if (!argCache[key] || argCache[key].length === 0) {
-      if (loadingKeys.has(key)) return null;
+      if (loadingKeys.has(key)) return { error: "loading" };
       loadingKeys.add(key);
       try {
         argCache[key] = await fetchArgs(m, cat);
       } catch (e) {
         console.error(e);
-        argCache[key] = [
-          "Hmm, my brain is buffering. Try another button!",
-          "I had an argument ready but I forgot it. Classic me."
-        ];
+        loadingKeys.delete(key);
+        return { error: "fetch" };
       }
       loadingKeys.delete(key);
     }
     const i = Math.floor(Math.random() * argCache[key].length);
-    return argCache[key].splice(i, 1)[0];
+    return { line: argCache[key].splice(i, 1)[0] };
   }
 
   // Clear cache for non-default missions when mission changes
   let lastMission = getMission();
-  mission.addEventListener("blur", () => {
+  function maybeClearCache() {
     const newM = getMission();
     if (newM !== lastMission) {
       Object.keys(argCache).forEach(k => {
@@ -1112,7 +1164,7 @@
       });
       lastMission = newM;
     }
-  });
+  }
 
   document.querySelectorAll(".btn[data-cat]").forEach(btn => {
     btn.addEventListener("click", async () => {
@@ -1127,10 +1179,17 @@
         btn.disabled = true;
       }
 
-      const line = await getArg(cat);
+      const result = await getArg(cat);
       btn.disabled = false;
       speech.classList.remove("thinking");
 
+      if (result.error === "loading") return;
+      if (result.error === "fetch") {
+        speech.textContent = "🛰️ Couldn't reach the brain. Tap the button again to retry!";
+        speech.classList.add("shake");
+        return;
+      }
+      const line = result.line;
       if (!line) return;
 
       speech.textContent = line;
