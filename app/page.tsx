@@ -1,5 +1,7 @@
 import { SITE, KIDS, APPS } from "@/lib/site";
 import { Mascot } from "@/components/Mascot";
+import { CodeOfHonor } from "@/components/CodeOfHonor";
+import { IdeaBox } from "@/components/IdeaBox";
 
 export default function Landing() {
   return (
@@ -27,8 +29,17 @@ export default function Landing() {
               </h3>
               <p className="kid-loves-label">Loves:</p>
               <ul className="kid-loves">
-                {kid.loves.map((l) => (
-                  <li key={l}>{l}</li>
+                {kid.loves.map((item, i) => (
+                  <li key={item.label}>
+                    <span
+                      className="kid-love-icon"
+                      style={{ animationDelay: `${i * 0.18}s` }}
+                      aria-hidden
+                    >
+                      {item.icon}
+                    </span>
+                    <span className="kid-love-label">{item.label}</span>
+                  </li>
                 ))}
               </ul>
             </article>
@@ -56,6 +67,14 @@ export default function Landing() {
           ))}
         </div>
       </section>
+
+      <IdeaBox
+        topic="new app"
+        prompt="Tell Rowan and Mae what fun app to build next."
+        emoji="🚀"
+      />
+
+      <CodeOfHonor />
 
       <footer className="landing-footer">
         <p>Made with kindness. More apps coming soon.</p>

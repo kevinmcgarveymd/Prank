@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import type { PrankCall } from "@/lib/types";
 import { useRatings, RATING_OPTIONS, type Rating } from "@/lib/useRatings";
+import { burstConfetti } from "@/lib/confetti";
 
 function pickRandom<T extends { id: number }>(arr: T[], not?: number): T {
   if (arr.length <= 1) return arr[0];
@@ -13,9 +14,24 @@ function pickRandom<T extends { id: number }>(arr: T[], not?: number): T {
   return arr[i];
 }
 
+function buildCallText(c: PrankCall) {
+  return [
+    `📞 PRANK CALL PLAN`,
+    ``,
+    `Script: ${c.title}`,
+    `Reveal after about ${c.reveal_after_seconds} seconds.`,
+    ``,
+    `What to say:`,
+    `"${c.script}"`,
+    ``,
+    `— from buildapps.fun`,
+  ].join("\n");
+}
+
 export function PrankCallIdea({ calls }: { calls: PrankCall[] }) {
   const [current, setCurrent] = useState<PrankCall>(() => pickRandom(calls));
   const [justRated, setJustRated] = useState<Rating | null>(null);
+  const [copied, setCopied] = useState(false);
   const { ratings, rate } = useRatings();
   const key = `call:${current.id}`;
   const previousRating = ratings[key];
@@ -23,11 +39,21 @@ export function PrankCallIdea({ calls }: { calls: PrankCall[] }) {
   const handleRate = (value: Rating) => {
     rate(key, value);
     setJustRated(value);
+    if (value === "love" || value === "good") burstConfetti();
   };
 
   const handleNext = () => {
     setCurrent(pickRandom(calls, current.id));
     setJustRated(null);
+    setCopied(false);
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(buildCallText(current));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {}
   };
 
   const ratedDisplay = useMemo(() => {
@@ -38,12 +64,14 @@ export function PrankCallIdea({ calls }: { calls: PrankCall[] }) {
 
   return (
     <div className="idea-card">
-      <p className="idea-meta">
+      <span className="idea-meta">
         📞 Reveal after ~{current.reveal_after_seconds} seconds — only call
         someone who agreed to be pranked!
-      </p>
+      </span>
       <h2 className="idea-title">{current.title}</h2>
-      <blockquote className="call-script">&ldquo;{current.script}&rdquo;</blockquote>
+      <blockquote className="call-script">
+        &ldquo;{current.script}&rdquo;
+      </blockquote>
 
       <div className="rating-section">
         <p className="rating-prompt">
@@ -70,11 +98,16 @@ export function PrankCallIdea({ calls }: { calls: PrankCall[] }) {
           </div>
         )}
 
-        {ratedDisplay && (
-          <button className="next-btn" onClick={handleNext}>
-            Show me another! 🎲
+        <div className="action-row">
+          <button className="copy-btn" onClick={handleCopy}>
+            {copied ? "Copied! ✅" : "Copy script 📋"}
           </button>
-        )}
+          {ratedDisplay && (
+            <button className="next-btn" onClick={handleNext}>
+              Show me another! 🎲
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
