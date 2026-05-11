@@ -9,12 +9,14 @@ export const KIDS = [
     age: 10,
     loves: ["football", "church", "reading", "math", "playing drums"],
     color: "var(--accent)",
+    mascot: "rowan" as const,
   },
   {
     name: "Mae",
     age: 8,
     loves: ["Taylor Swift", "climbing", "pranks", "cartwheels", "lacrosse"],
     color: "var(--accent-3)",
+    mascot: "mae" as const,
   },
 ];
 

@@ -400,23 +400,233 @@ header.hero p {
   font-size: 0.9rem;
 }
 
-.tabs {
+.kid-mascot {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--border);
+  justify-content: center;
+  margin-bottom: 4px;
 }
 
-.tab {
+.hero-mascot {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  margin: 24px 0;
+}
+
+@media (min-width: 640px) {
+  .menu-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.menu-btn {
+  background: var(--card);
+  border: 3px solid var(--border);
+  border-radius: 22px;
+  padding: 28px 22px;
+  text-align: left;
+  font-family: inherit;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.1s ease, border-color 0.15s, box-shadow 0.15s;
+}
+
+.menu-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(31, 29, 54, 0.12);
+}
+
+.menu-btn-pranks:hover {
+  border-color: var(--accent-2);
+}
+
+.menu-btn-calls:hover {
+  border-color: var(--accent-3);
+}
+
+.menu-emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.menu-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.menu-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.menu-back {
   background: transparent;
   border: 0;
-  border-bottom: 3px solid transparent;
-  padding: 10px 14px;
-  font-weight: 600;
   color: var(--muted);
+  font-weight: 600;
+  padding: 6px 0;
+  margin-bottom: 8px;
 }
 
-.tab.active {
+.menu-back:hover {
   color: var(--ink);
-  border-bottom-color: var(--accent);
+}
+
+.idea-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 28px 22px;
+  box-shadow: var(--shadow);
+}
+
+.idea-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 8px;
+}
+
+.idea-title {
+  margin: 0 0 12px;
+  font-size: 1.8rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.idea-desc {
+  font-size: 1.05rem;
+  margin: 0 0 16px;
+}
+
+.idea-steps {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.idea-steps summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.idea-steps ol {
+  margin: 10px 0 0;
+  padding-left: 22px;
+}
+
+.idea-steps li {
+  margin-bottom: 6px;
+}
+
+.call-script {
+  margin: 0 0 20px;
+  padding: 18px 20px;
+  background: var(--bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.rating-section {
+  border-top: 1px dashed var(--border);
+  padding-top: 18px;
+  margin-top: 12px;
+}
+
+.rating-prompt {
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.rating-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (min-width: 520px) {
+  .rating-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.rating-btn {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  transition: transform 0.05s ease, border-color 0.15s, background 0.15s;
+}
+
+.rating-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-2);
+  background: var(--bg);
+}
+
+.rating-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.rating-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.rating-confirm {
+  background: var(--bg);
+  border: 2px solid var(--accent-2);
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.rating-confirm-emoji {
+  font-size: 2.4rem;
+}
+
+.rating-confirm-label {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.next-btn {
+  background: var(--accent-3);
+  color: white;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  width: 100%;
+  margin-top: 8px;
+  transition: transform 0.05s ease, background 0.15s;
+}
+
+.next-btn:hover {
+  transform: translateY(-1px);
+  background: #04b685;
 }

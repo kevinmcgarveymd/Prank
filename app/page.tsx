@@ -1,4 +1,5 @@
 import { SITE, KIDS, APPS } from "@/lib/site";
+import { Mascot } from "@/components/Mascot";
 
 export default function Landing() {
   return (
@@ -12,7 +13,14 @@ export default function Landing() {
         <h2>Meet the builders</h2>
         <div className="kid-grid">
           {KIDS.map((kid) => (
-            <article className="kid-card" key={kid.name} style={{ borderTopColor: kid.color }}>
+            <article
+              className="kid-card"
+              key={kid.name}
+              style={{ borderTopColor: kid.color }}
+            >
+              <div className="kid-mascot">
+                <Mascot variant={kid.mascot} size={140} />
+              </div>
               <h3>
                 {kid.name}
                 <span className="kid-age">age {kid.age}</span>
