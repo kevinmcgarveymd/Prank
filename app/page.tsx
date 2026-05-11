@@ -1,6 +1,5 @@
 import { SITE, KIDS, APPS } from "@/lib/site";
 import { Mascot } from "@/components/Mascot";
-import { CodeOfHonor } from "@/components/CodeOfHonor";
 import { IdeaBox } from "@/components/IdeaBox";
 
 export default function Landing() {
@@ -73,8 +72,6 @@ export default function Landing() {
         prompt="Tell Rowan and Mae what fun app to build next."
         emoji="🚀"
       />
-
-      <CodeOfHonor />
 
       <footer className="landing-footer">
         <p>Made with kindness. More apps coming soon.</p>
