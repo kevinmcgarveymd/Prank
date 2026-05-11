@@ -4,7 +4,6 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Prank Lab — kind pranks for kids",
   description: "Funny, friendly pranks that make everyone laugh.",
-  manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
