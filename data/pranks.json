@@ -1,0 +1,1862 @@
+{
+  "version": 1,
+  "ethics_rules": [
+    "No fear or scaring people",
+    "No mess that someone else has to clean up",
+    "No embarrassment in front of other people",
+    "Stop immediately if the person asks you to",
+    "Never prank strangers or anyone who hasn't agreed to be pranked",
+    "Never damage anything",
+    "Never waste food or other resources"
+  ],
+  "pranks": [
+    {
+      "id": 1,
+      "title": "Googly Eyes on Everything",
+      "category": "visual",
+      "target": ["family", "self"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["googly eyes", "removable tape"],
+      "ethics_score": 10,
+      "description": "Stick googly eyes on items in the fridge, on fruit, on shampoo bottles. Watch faces light up when they open the fridge.",
+      "steps": [
+        "Buy a pack of stick-on googly eyes",
+        "Place pairs of eyes on food packaging, eggs, milk carton, soap",
+        "Leave them and wait for someone to find them"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Upside Down Room",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "while-away",
+      "duration_minutes": 30,
+      "materials": ["nothing"],
+      "ethics_score": 9,
+      "description": "Flip lightweight things upside down in your sibling's room. Picture frames, books on shelf, stuffed animals. Nothing breaks, nothing moves out of place.",
+      "steps": [
+        "Wait until they leave their room",
+        "Carefully flip frames, books, plushies upside down",
+        "Leave the room exactly as you found it otherwise"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "The Frozen Cereal Bowl",
+      "category": "food",
+      "target": ["sibling", "parent"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "morning",
+      "duration_minutes": 5,
+      "materials": ["cereal", "milk", "freezer"],
+      "ethics_score": 8,
+      "description": "Pour their usual cereal and milk the night before, then freeze it. In the morning hand them a 'breakfast' that won't budge.",
+      "steps": [
+        "Ask them what cereal they want for breakfast",
+        "Make the bowl with milk the night before",
+        "Place in freezer overnight",
+        "Hand it to them with a spoon in the morning"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Voice-Activated Faucet",
+      "category": "verbal",
+      "target": ["parent", "sibling"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 2,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Tell them the kitchen faucet was upgraded to voice control and they have to say 'water on, please' to make it work.",
+      "steps": [
+        "Mention casually that the faucet is now voice-activated",
+        "Demonstrate by saying the phrase as you turn the handle subtly",
+        "Watch them try it later"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Tiny Cereal Box",
+      "category": "food",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "morning",
+      "duration_minutes": 10,
+      "materials": ["cereal box", "scissors", "tape"],
+      "ethics_score": 9,
+      "description": "Make a miniature version of the family cereal box and put it in the cabinet next to the real one.",
+      "steps": [
+        "Print or draw a tiny version of the cereal box label",
+        "Build a mini box from cardboard",
+        "Place it on the shelf in front of the real box"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Backwards Day",
+      "category": "outfit",
+      "target": ["self"],
+      "setting": ["home", "school"],
+      "age_range": "5+",
+      "time_of_day": "morning",
+      "duration_minutes": 5,
+      "materials": ["your own clothes"],
+      "ethics_score": 10,
+      "description": "Wear your shirt backwards all morning until someone notices, then act surprised.",
+      "steps": [
+        "Put your shirt on backwards in the morning",
+        "Act normally",
+        "When someone points it out, gasp and say 'How did THAT happen?'"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Ceiling Spider",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["pipe cleaner or paper", "removable tape"],
+      "ethics_score": 7,
+      "description": "Tape a paper spider to the ceiling above their desk. Only do this if your sibling thinks bugs are funny, never if they're scared of them.",
+      "steps": [
+        "First check: would this scare them? If yes, skip this prank",
+        "Cut a spider shape from black paper",
+        "Tape to ceiling above their study spot",
+        "Wait for them to look up"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Auto-Correct My Name",
+      "category": "tech",
+      "target": ["sibling", "parent"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "any",
+      "duration_minutes": 3,
+      "materials": ["their phone (with permission later)"],
+      "ethics_score": 8,
+      "description": "Add a keyboard shortcut on their phone so 'hi' auto-expands into a long silly greeting. Tell them within an hour so they can undo it.",
+      "steps": [
+        "Get permission to borrow their phone for a minute",
+        "Go to Settings, Keyboard, Text Replacement",
+        "Add: shortcut 'hi' expands to 'Greetings honored human, what a fine day'",
+        "Tell them about it after they've used it once"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Fake Spilled Milk",
+      "category": "visual",
+      "target": ["parent"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 60,
+      "materials": ["white glue", "wax paper"],
+      "ethics_score": 9,
+      "description": "Make a fake puddle of spilled milk from glue and place it next to a tipped-over (empty) cup.",
+      "steps": [
+        "Pour white glue in a milk-puddle shape onto wax paper",
+        "Let dry overnight until it peels off",
+        "Place on table next to a tipped-over empty cup",
+        "Reveal the trick within 30 seconds of them seeing it"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Bubble Wrap Welcome",
+      "category": "sound",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["bubble wrap", "rug"],
+      "ethics_score": 10,
+      "description": "Hide bubble wrap under the rug at the front door. Pop pop pop when they walk in.",
+      "steps": [
+        "Lift the entryway rug",
+        "Spread bubble wrap underneath",
+        "Replace the rug",
+        "Wait for the popping sounds"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "The Long Letter",
+      "category": "written",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 15,
+      "materials": ["paper", "pen"],
+      "ethics_score": 10,
+      "description": "Write a 4-page handwritten letter that builds up dramatically and ends with 'made you read all this'.",
+      "steps": [
+        "Write a long story about something exciting that happened",
+        "On the last page reveal it was just a prank to make them read",
+        "Slip under their door"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Wrong Day of the Week",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "morning",
+      "duration_minutes": 1,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Tell everyone in the morning that today is the wrong day of the week and act surprised when they correct you.",
+      "steps": [
+        "At breakfast say 'Happy Wednesday everyone!' (when it's actually Tuesday)",
+        "Insist for a moment, then laugh"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Frozen Toothbrush",
+      "category": "bathroom",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "evening",
+      "duration_minutes": 5,
+      "materials": ["cup", "water", "freezer"],
+      "ethics_score": 9,
+      "description": "With permission to borrow it, freeze your sibling's toothbrush in a cup of water. Hand it to them at bedtime.",
+      "steps": [
+        "Take the toothbrush early in the day",
+        "Place in cup of water in freezer",
+        "Hand to them at brushing time, then immediately offer their real one"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Mystery Sock Pile",
+      "category": "visual",
+      "target": ["parent"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 15,
+      "materials": ["clean socks"],
+      "ethics_score": 10,
+      "description": "Hide a clean rolled-up sock in 10 different normal places. Watch them slowly find them all week.",
+      "steps": [
+        "Take 10 clean rolled socks from your own drawer",
+        "Hide one in the fridge, one in a shoe, one in the cereal box, etc.",
+        "Tell them at the end of the week how many they missed"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Pet Rock Surprise",
+      "category": "gift",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 20,
+      "materials": ["rock", "markers", "shoebox"],
+      "ethics_score": 10,
+      "description": "Wrap a rock with a face drawn on it as a 'surprise gift'. Build up a lot of excitement first.",
+      "steps": [
+        "Find a smooth rock outside",
+        "Draw a friendly face on it",
+        "Wrap it carefully like a real present",
+        "Hand it over with a big speech about how special it is"
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Whoopee Cushion Classic",
+      "category": "sound",
+      "target": ["sibling", "parent"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 1,
+      "materials": ["whoopee cushion"],
+      "ethics_score": 10,
+      "description": "The original. Place the whoopee cushion under a couch cushion right before they sit down.",
+      "steps": [
+        "Inflate the whoopee cushion",
+        "Slip under their favorite seat cushion",
+        "Wait"
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Drawer Confetti (One Piece)",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 1,
+      "materials": ["one paper square"],
+      "ethics_score": 10,
+      "description": "Place a single tiny piece of paper that says 'BOO' inside their pencil drawer. Minimal mess, big surprise.",
+      "steps": [
+        "Cut a small square of paper",
+        "Write 'BOO' or a smiley on it",
+        "Tape inside their drawer so they see it when they open it"
+      ]
+    },
+    {
+      "id": 18,
+      "title": "The Wrong Picture Frame",
+      "category": "visual",
+      "target": ["parent"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "while-away",
+      "duration_minutes": 10,
+      "materials": ["printer paper", "picture frame"],
+      "ethics_score": 9,
+      "description": "Print out a picture of a celebrity or cartoon character and slip it inside an existing photo frame.",
+      "steps": [
+        "Print a silly photo at the same size as the frame",
+        "Carefully open the frame and put the new photo on top",
+        "Reassemble and put back",
+        "Tell them within a day so they know it's swapped"
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Mismatched Shoes",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "morning",
+      "duration_minutes": 1,
+      "materials": ["their own shoes"],
+      "ethics_score": 8,
+      "description": "Swap one of their shoes with one from a different pair, but keep the matching pair nearby so they're not late.",
+      "steps": [
+        "Take one shoe and replace with a different shoe (also their own)",
+        "Watch them notice",
+        "Make sure they have time to fix it before leaving"
+      ]
+    },
+    {
+      "id": 20,
+      "title": "The Compliment Ambush",
+      "category": "kindness",
+      "target": ["anyone"],
+      "setting": ["home", "school"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 1,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "A 'reverse prank' - sneak up on someone and give them an over-the-top compliment.",
+      "steps": [
+        "Pick someone who deserves cheering up",
+        "Run up and shout 'AMBUSHED! You're amazing at math!'",
+        "Run away dramatically"
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Robot Voice Question",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 1,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "For one whole conversation, only respond in robot voice. Start a normal chat, then never break character.",
+      "steps": [
+        "Start a normal conversation",
+        "Switch to robot voice for every response",
+        "Keep going until they laugh or ask you to stop"
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Stuffed Animal Ambush",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "while-away",
+      "duration_minutes": 10,
+      "materials": ["stuffed animals"],
+      "ethics_score": 10,
+      "description": "Arrange all their stuffed animals around their bed having a meeting.",
+      "steps": [
+        "Gather every plushie you can find",
+        "Arrange them in a circle on their bed like they're chatting",
+        "Optional: leave a tiny note in the middle reading 'meeting in progress'"
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Reverse Bedroom",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "10+",
+      "time_of_day": "while-away",
+      "duration_minutes": 30,
+      "materials": ["nothing"],
+      "ethics_score": 8,
+      "description": "Carefully turn lightweight things in their room to face the wall. Picture frames, books, etc.",
+      "steps": [
+        "While they're out, turn frames to face the wall",
+        "Turn books spine-in",
+        "Make sure to put everything back the way it was after they see it"
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Salt the Sugar Bowl",
+      "category": "food",
+      "target": ["self"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 2,
+      "materials": ["sugar bowl", "salt"],
+      "ethics_score": 5,
+      "description": "Only do this on yourself or with someone who already knows it's coming - never secretly. Swap the contents and act surprised at your own coffee.",
+      "steps": [
+        "Tell your family in advance you're doing a self-prank",
+        "Swap sugar with salt in your own bowl only",
+        "React dramatically to your own breakfast"
+      ]
+    },
+    {
+      "id": 25,
+      "title": "The Faulty Remote",
+      "category": "tech",
+      "target": ["parent"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "evening",
+      "duration_minutes": 2,
+      "materials": ["sticky note", "TV remote"],
+      "ethics_score": 9,
+      "description": "Put a small sticky note over the remote's sensor. The remote 'breaks'. Reveal within 60 seconds.",
+      "steps": [
+        "Cut a tiny piece of sticky note",
+        "Place over the front sensor of the remote",
+        "Watch them press buttons in confusion",
+        "Reveal quickly so no one gets frustrated"
+      ]
+    },
+    {
+      "id": 26,
+      "title": "Grape in the Cherry Tomato Bowl",
+      "category": "food",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "dinner",
+      "duration_minutes": 1,
+      "materials": ["one grape"],
+      "ethics_score": 10,
+      "description": "Sneak a single green grape into a bowl of cherry tomatoes. Watch the face when someone bites it.",
+      "steps": [
+        "Wash a green grape",
+        "Tuck it into the cherry tomato bowl",
+        "Wait for the surprise crunch"
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Tomato in the Grapes",
+      "category": "food",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 1,
+      "materials": ["one cherry tomato"],
+      "ethics_score": 10,
+      "description": "Same idea, reversed. A cherry tomato hiding in the grape bunch.",
+      "steps": [
+        "Wash a small cherry tomato",
+        "Set it among the grapes",
+        "Pretend not to know anything"
+      ]
+    },
+    {
+      "id": 28,
+      "title": "The Overly Polite Day",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "morning",
+      "duration_minutes": 240,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Be EXTREMELY polite all day. Bow when handing things over. Say 'I do humbly request the cereal' instead of 'pass the cereal'.",
+      "steps": [
+        "Decide on a fancy old-timey way of speaking",
+        "Use it for every interaction",
+        "Bow occasionally"
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Door Sign Prank",
+      "category": "written",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["paper", "tape"],
+      "ethics_score": 10,
+      "description": "Put a 'Wet Paint' or 'Out of Order' sign on something completely normal, like the cereal cabinet.",
+      "steps": [
+        "Make a serious-looking sign that says 'CEREAL CABINET OUT OF ORDER'",
+        "Tape to the cabinet door",
+        "Wait for someone to read it and laugh"
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Pretend I Can't Hear",
+      "category": "verbal",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 8,
+      "description": "Pretend you suddenly can't hear them at all but can hear everyone else. Cup ear, look confused.",
+      "steps": [
+        "When sibling speaks, look totally puzzled",
+        "Respond normally to others",
+        "Reveal after a couple of minutes - never let them feel ignored"
+      ]
+    },
+    {
+      "id": 31,
+      "title": "The Ice Cream Cone of Mashed Potatoes",
+      "category": "food",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "dinner",
+      "duration_minutes": 10,
+      "materials": ["ice cream cone", "mashed potatoes"],
+      "ethics_score": 10,
+      "description": "Serve mashed potatoes scooped on top of an ice cream cone like dessert. Reveal it's actually dinner.",
+      "steps": [
+        "Make mashed potatoes (or use leftovers)",
+        "Scoop into a cone shape on top of an ice cream cone",
+        "Hand over with great excitement about 'dessert before dinner'"
+      ]
+    },
+    {
+      "id": 32,
+      "title": "Wallpaper a Door in Wrapping Paper",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "while-away",
+      "duration_minutes": 20,
+      "materials": ["wrapping paper", "removable tape"],
+      "ethics_score": 9,
+      "description": "Cover their bedroom door entirely in wrapping paper using removable tape only. Easy cleanup, big visual reveal.",
+      "steps": [
+        "Use only painter's tape (removable, won't damage paint)",
+        "Cover the outside of their door in wrapping paper",
+        "Help take it down afterwards"
+      ]
+    },
+    {
+      "id": 33,
+      "title": "Drawer Switcheroo",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "while-away",
+      "duration_minutes": 15,
+      "materials": ["nothing"],
+      "ethics_score": 8,
+      "description": "Swap the contents of two of their drawers - socks become shirts, etc. Help them put it back after.",
+      "steps": [
+        "Pick two drawers with similar-sized clothes",
+        "Carefully swap the contents",
+        "Be ready to help return it to normal"
+      ]
+    },
+    {
+      "id": 34,
+      "title": "Fake Phone Ring",
+      "category": "sound",
+      "target": ["parent"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 1,
+      "materials": ["voice"],
+      "ethics_score": 9,
+      "description": "Mimic a phone ringing perfectly. Watch parents check their pocket. Reveal quickly.",
+      "steps": [
+        "Practice a convincing ringtone with your voice",
+        "Make the sound from another room",
+        "Step out laughing before they search too long"
+      ]
+    },
+    {
+      "id": 35,
+      "title": "The Loud Whisper",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Have a normal conversation but at maximum volume. Then a normal-volume conversation in a tiny whisper.",
+      "steps": [
+        "Walk up and SHOUT 'HELLO HOW ARE YOU TODAY'",
+        "Then drop to a whisper for everything else",
+        "Switch back without warning"
+      ]
+    },
+    {
+      "id": 36,
+      "title": "Costume Lunch Drop-off",
+      "category": "outfit",
+      "target": ["sibling"],
+      "setting": ["school", "home"],
+      "age_range": "9+",
+      "time_of_day": "afternoon",
+      "duration_minutes": 5,
+      "materials": ["funny hat or wig"],
+      "ethics_score": 7,
+      "description": "Only with a sibling who would think this is funny - greet them at the door from school in a silly hat.",
+      "steps": [
+        "Check first that this won't embarrass them in front of friends",
+        "Wait by the door in a goofy hat",
+        "Greet them like nothing is unusual"
+      ]
+    },
+    {
+      "id": 37,
+      "title": "Mystery Smoothie",
+      "category": "food",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "afternoon",
+      "duration_minutes": 10,
+      "materials": ["blender", "edible ingredients only"],
+      "ethics_score": 9,
+      "description": "Make a smoothie with strange but completely safe and edible combinations. Spinach + banana + pickle juice. Reveal ingredients after they brave a sip.",
+      "steps": [
+        "Check for any food allergies first",
+        "Use only safe edible ingredients - no soap, no anything weird",
+        "Offer one small sip",
+        "Reveal the ingredients and have a normal smoothie ready as backup"
+      ]
+    },
+    {
+      "id": 38,
+      "title": "I'm a Statue",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Freeze in a strange pose somewhere people will pass and refuse to move or react.",
+      "steps": [
+        "Pick a hallway",
+        "Strike a dramatic pose - one foot up, finger pointing somewhere",
+        "Hold completely still until someone asks what you're doing"
+      ]
+    },
+    {
+      "id": 39,
+      "title": "Backwards Walking Day",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Walk backwards everywhere you go for an hour. Refuse to acknowledge anything is unusual.",
+      "steps": [
+        "Walk to breakfast backwards",
+        "Walk to your room backwards",
+        "Look surprised when someone points it out"
+      ]
+    },
+    {
+      "id": 40,
+      "title": "Hidden Disco",
+      "category": "tech",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["bluetooth speaker"],
+      "ethics_score": 8,
+      "description": "Hide a small bluetooth speaker in their room. Play one second of disco music every few minutes. Reveal within an hour.",
+      "steps": [
+        "Hide a small speaker behind a book on their shelf",
+        "From another room, play a 1-second disco clip",
+        "Wait a few minutes, do it again",
+        "Reveal the speaker so they know it's not a haunting"
+      ]
+    },
+    {
+      "id": 41,
+      "title": "The Frozen Greeting",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 2,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "When someone walks into the room, freeze mid-action like you've been paused. Stay frozen until they laugh.",
+      "steps": [
+        "Be doing something normal like reading",
+        "When they enter, freeze with the page half-turned",
+        "Don't blink, don't move"
+      ]
+    },
+    {
+      "id": 42,
+      "title": "Magic Coin",
+      "category": "trick",
+      "target": ["sibling"],
+      "setting": ["home", "school"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["coin"],
+      "ethics_score": 10,
+      "description": "Learn a simple coin disappear trick from a video. Show off all day until they figure it out.",
+      "steps": [
+        "Watch a beginner coin trick tutorial",
+        "Practice a few times",
+        "Perform whenever you walk past your sibling"
+      ]
+    },
+    {
+      "id": 43,
+      "title": "The Fancy Restaurant",
+      "category": "food",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "dinner",
+      "duration_minutes": 30,
+      "materials": ["napkin over arm"],
+      "ethics_score": 10,
+      "description": "Set the dinner table fancy and act as a snobby waiter all evening. Bring real dinner to the table on a tray.",
+      "steps": [
+        "Tell parents you're hosting tonight",
+        "Drape a napkin over your arm",
+        "Use a fake fancy accent and offer a 'menu'"
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Photobomb the Family Photos",
+      "category": "visual",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "while-away",
+      "duration_minutes": 5,
+      "materials": ["cut-out face on stick"],
+      "ethics_score": 9,
+      "description": "Cut out a small picture of your face and tape it onto a stick. Add it just behind a family photo on the shelf.",
+      "steps": [
+        "Print a small selfie",
+        "Glue to a popsicle stick",
+        "Stand it behind a photo frame so just your head peeks over"
+      ]
+    },
+    {
+      "id": 45,
+      "title": "The Rubber Band Sprayer",
+      "category": "self",
+      "target": ["self"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "any",
+      "duration_minutes": 2,
+      "materials": ["rubber band", "kitchen sprayer"],
+      "ethics_score": 4,
+      "description": "DO NOT do this to anyone else - water can damage phones, ruin clothes, and stress people out. The classic version (rubber band on the kitchen sprayer) is included here only as an example of what NOT to do.",
+      "steps": [
+        "Skip this one",
+        "Try a different prank instead"
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Pretend I'm Asleep Standing Up",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 2,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Stand in a doorway with your eyes closed and snore quietly. When people approach, just keep snoring.",
+      "steps": [
+        "Stand somewhere people pass",
+        "Close eyes, snore softly",
+        "Don't move when they say your name"
+      ]
+    },
+    {
+      "id": 47,
+      "title": "Wrong Light Switch Labels",
+      "category": "written",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["sticky notes", "pen"],
+      "ethics_score": 10,
+      "description": "Label every light switch with what it 'really' does. Like 'Summons aliens' or 'Activates dragon mode'.",
+      "steps": [
+        "Cut small sticky notes",
+        "Write silly purposes on each",
+        "Stick under each switch in the house"
+      ]
+    },
+    {
+      "id": 48,
+      "title": "The Imaginary Friend",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Introduce your family to your new imaginary friend named Bartholomew the Pickle.",
+      "steps": [
+        "Walk around with an empty arm crooked like you're holding hands",
+        "Say things like 'Bartholomew says hi'",
+        "Insist on setting a place for him at dinner"
+      ]
+    },
+    {
+      "id": 49,
+      "title": "Yes Day Reverse",
+      "category": "verbal",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["nothing"],
+      "ethics_score": 9,
+      "description": "Agree enthusiastically with EVERYTHING your sibling says, even contradictions. 'You should clean your room.' 'YES!' 'You should not clean your room.' 'YES!'",
+      "steps": [
+        "Pick 30 minutes to be ultra-agreeable",
+        "Say YES to everything with enthusiasm",
+        "Reveal the prank if they get confused"
+      ]
+    },
+    {
+      "id": 50,
+      "title": "The Long Knock-Knock",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Tell a knock-knock joke that has 30 'who's there' rounds before the punchline. Drag it out as long as possible.",
+      "steps": [
+        "Start: 'Knock knock'",
+        "Each time they say 'who's there', say 'BANANA' for ten rounds",
+        "Then switch to 'ORANGE' for the punchline: 'Orange you glad I didn't say banana?'"
+      ]
+    },
+    {
+      "id": 51,
+      "title": "Encyclopedia Cover for Comic Book",
+      "category": "visual",
+      "target": ["parent"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["paper", "comic book"],
+      "ethics_score": 10,
+      "description": "Make a fake serious-looking textbook cover for a comic book. Read 'studiously' next to your parent.",
+      "steps": [
+        "Wrap a comic in paper",
+        "Write a fancy title like 'Advanced Calculus Volume IV'",
+        "Read it with extreme concentration"
+      ]
+    },
+    {
+      "id": 52,
+      "title": "Paper Cup Maze",
+      "category": "visual",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "while-away",
+      "duration_minutes": 30,
+      "materials": ["paper cups", "open floor"],
+      "ethics_score": 7,
+      "description": "Set up dozens of empty paper cups in a path through a hallway so people have to step around them. Help collect them after.",
+      "steps": [
+        "Use empty disposable cups only - no liquid",
+        "Arrange them through a non-essential hallway",
+        "Be present to help collect them right after the reveal"
+      ]
+    },
+    {
+      "id": 53,
+      "title": "Slow Motion Day",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Move in extreme slow motion. Take 30 seconds to lift a fork. Take 60 seconds to walk five steps.",
+      "steps": [
+        "Pick a 10-minute window",
+        "Move everything in slow motion",
+        "Speak in a low slow voice too"
+      ]
+    },
+    {
+      "id": 54,
+      "title": "Mystery Object",
+      "category": "visual",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["random small object"],
+      "ethics_score": 10,
+      "description": "Place a totally random object in a place where it doesn't belong. A spoon on the bookshelf. A toy car in the salad.",
+      "steps": [
+        "Pick something safe and clean",
+        "Tuck it somewhere unusual",
+        "Wait to see how long it takes to be noticed"
+      ]
+    },
+    {
+      "id": 55,
+      "title": "Operation Stealth Sticker",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 60,
+      "materials": ["sticker"],
+      "ethics_score": 9,
+      "description": "Stick a single small sticker on the back of your sibling. See how long it takes them to find it.",
+      "steps": [
+        "Pick a fun sticker",
+        "Wait for a hug or a back-pat moment",
+        "Stick gently on their back",
+        "Tell them after lunch if they haven't noticed"
+      ]
+    },
+    {
+      "id": 56,
+      "title": "Ceiling Note",
+      "category": "written",
+      "target": ["sibling", "parent"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "evening",
+      "duration_minutes": 5,
+      "materials": ["sticky note"],
+      "ethics_score": 10,
+      "description": "Put a sticky note on the ceiling above their bed that says 'Why are you looking up?'",
+      "steps": [
+        "Stand on a chair safely",
+        "Stick a note on the ceiling above their pillow",
+        "Wait for them to lie down and find it"
+      ]
+    },
+    {
+      "id": 57,
+      "title": "Fake Cake",
+      "category": "visual",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["sponge", "frosting"],
+      "ethics_score": 9,
+      "description": "Frost a clean kitchen sponge to look like a slice of cake. Offer it on a plate. Have a real treat ready as a follow-up.",
+      "steps": [
+        "Use a brand-new clean sponge",
+        "Cover with safe frosting (don't let anyone actually eat it)",
+        "Reveal before any bite is taken",
+        "Bring out the real cake or fruit immediately"
+      ]
+    },
+    {
+      "id": 58,
+      "title": "Pet Translator",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["pet (or stuffed pet)"],
+      "ethics_score": 10,
+      "description": "Pretend to translate everything the family pet (or a plushie) is saying. Make it dramatic.",
+      "steps": [
+        "Sit by the pet",
+        "Listen intently",
+        "Translate: 'She says she demands more treats and respect'"
+      ]
+    },
+    {
+      "id": 59,
+      "title": "Lego Instructions",
+      "category": "written",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 15,
+      "materials": ["paper", "pen"],
+      "ethics_score": 10,
+      "description": "Make a fake instruction manual for a 'new' Lego set. The instructions get sillier with every step.",
+      "steps": [
+        "Draw step 1: 2 normal bricks",
+        "Step 2: connect them",
+        "Step 5: now build a rocket. Step 6: launch to Mars"
+      ]
+    },
+    {
+      "id": 60,
+      "title": "I Forgot How to Sit",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 3,
+      "materials": ["chair"],
+      "ethics_score": 10,
+      "description": "Approach a chair and act like you've forgotten how to use it. Try sitting upside down, sideways, on the back.",
+      "steps": [
+        "Stare at the chair confused",
+        "Try sitting in increasingly silly ways",
+        "Eventually 'figure it out' triumphantly"
+      ]
+    },
+    {
+      "id": 61,
+      "title": "Echo",
+      "category": "verbal",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 7,
+      "description": "Repeat exactly what your sibling says. Stop the moment they ask you to.",
+      "steps": [
+        "Repeat their words quietly after them",
+        "Match their tone",
+        "STOP IMMEDIATELY when asked - no exceptions"
+      ]
+    },
+    {
+      "id": 62,
+      "title": "The Inventor",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["random objects"],
+      "ethics_score": 10,
+      "description": "Tape two random objects together and present them as your latest invention with a serious explanation.",
+      "steps": [
+        "Tape a spoon to a stuffed animal",
+        "Call a family meeting",
+        "Explain it solves a problem nobody has"
+      ]
+    },
+    {
+      "id": 63,
+      "title": "Whisper Secret Messages to Plants",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["houseplant"],
+      "ethics_score": 10,
+      "description": "Walk up to houseplants and whisper into them. When asked what you're doing, say 'They needed an update.'",
+      "steps": [
+        "Approach a plant seriously",
+        "Whisper for 30 seconds",
+        "Walk away as if it was very important"
+      ]
+    },
+    {
+      "id": 64,
+      "title": "Reverse Greeting",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "morning",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Say 'goodbye' instead of 'hello' and 'good night' instead of 'good morning' for an entire morning.",
+      "steps": [
+        "When you see family members, say 'goodbye!'",
+        "Stay in character",
+        "Eventually let them in on the joke"
+      ]
+    },
+    {
+      "id": 65,
+      "title": "Fake Snow Globe",
+      "category": "visual",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["clear jar", "small toy", "water"],
+      "ethics_score": 10,
+      "description": "Make a snow globe with a tiny family member figurine inside. 'You're trapped in there!'",
+      "steps": [
+        "Glue a small figure to the jar lid",
+        "Fill jar with water and add a pinch of glitter",
+        "Seal tight",
+        "Give as a 'gift'"
+      ]
+    },
+    {
+      "id": 66,
+      "title": "Cardboard Cereal Box",
+      "category": "food",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "morning",
+      "duration_minutes": 10,
+      "materials": ["empty cereal box", "balled up paper"],
+      "ethics_score": 9,
+      "description": "Refill an empty cereal box with crumpled paper. Reveal immediately when they pour - have actual cereal ready.",
+      "steps": [
+        "Use an actually empty box",
+        "Stuff with crumpled clean paper",
+        "Watch them grab it",
+        "Reveal before they tip it over the bowl"
+      ]
+    },
+    {
+      "id": 67,
+      "title": "Pretend to Find Treasure",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["random object"],
+      "ethics_score": 10,
+      "description": "Pretend to dig in the couch cushions and 'discover' something amazing. A button. A grape. Hold it up like it's gold.",
+      "steps": [
+        "Dig theatrically into cushions",
+        "Gasp loudly",
+        "Hold up a button: 'WE'RE RICH!'"
+      ]
+    },
+    {
+      "id": 68,
+      "title": "Soap Doesn't Lather",
+      "category": "bathroom",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "morning",
+      "duration_minutes": 10,
+      "materials": ["clear nail polish", "bar of soap"],
+      "ethics_score": 5,
+      "description": "Skip this one too - leaving someone with un-clean hands isn't fair. Listed only as an example of an unfair prank.",
+      "steps": [
+        "Skip - try a different prank"
+      ]
+    },
+    {
+      "id": 69,
+      "title": "The Secret Handshake",
+      "category": "verbal",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Insist that the family has a new official secret handshake. Make it 30 steps long. Make everyone learn it.",
+      "steps": [
+        "Make up an absurdly long handshake",
+        "Insist on doing it before every meal",
+        "Add a step every day"
+      ]
+    },
+    {
+      "id": 70,
+      "title": "Pretend the WiFi Has Personality",
+      "category": "tech",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Talk to the WiFi router like it's a grumpy coworker. 'Come on Greg, we talked about this.'",
+      "steps": [
+        "Walk past the router",
+        "Have a one-sided conversation with it",
+        "Thank it whenever the internet works"
+      ]
+    },
+    {
+      "id": 71,
+      "title": "Loud Sound Effects",
+      "category": "sound",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["voice"],
+      "ethics_score": 10,
+      "description": "Make sound effects for everything you do. Walking: BOING. Sitting: WHOOSH. Picking up cup: ZOINK.",
+      "steps": [
+        "Pick a 10-minute window",
+        "Add a sound effect to every action",
+        "Don't break character"
+      ]
+    },
+    {
+      "id": 72,
+      "title": "Pretend to Be a Tour Guide",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["paper rolled into megaphone"],
+      "ethics_score": 10,
+      "description": "Lead a serious house tour for your family as if they've never seen it. 'And to our left, the famous refrigerator...'",
+      "steps": [
+        "Make a paper megaphone",
+        "Gather the family",
+        "Tour them through their own house with detailed history"
+      ]
+    },
+    {
+      "id": 73,
+      "title": "Tiny Notes in Pockets",
+      "category": "written",
+      "target": ["sibling", "parent"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["paper", "pen"],
+      "ethics_score": 10,
+      "description": "Slip a tiny encouraging or silly note into each of their coat pockets. They find them throughout the day.",
+      "steps": [
+        "Write small notes: 'You look great today!' or 'BANANA'",
+        "Slip into each coat pocket",
+        "They discover them on their own"
+      ]
+    },
+    {
+      "id": 74,
+      "title": "The Reading Out Loud",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["book"],
+      "ethics_score": 10,
+      "description": "Read the back of a cereal box out loud as if it's the most riveting story ever told. Use a Shakespearean voice.",
+      "steps": [
+        "Pick up any nutritional info",
+        "Read it like a dramatic monologue",
+        "'AND LO! TWELVE GRAMS OF SUGAR!'"
+      ]
+    },
+    {
+      "id": 75,
+      "title": "Reverse Hide and Seek",
+      "category": "physical",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 15,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Hide somewhere extremely obvious like under a clear table. See how long it takes them to find you.",
+      "steps": [
+        "Announce 'I'm hiding!'",
+        "Pick the worst hiding spot possible",
+        "Whisper 'shhh' to anyone who walks by"
+      ]
+    },
+    {
+      "id": 76,
+      "title": "Singing Conversations",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 15,
+      "materials": ["voice"],
+      "ethics_score": 10,
+      "description": "Sing every sentence in opera style for 15 minutes. Pass the saaaaaalt pleeeeeease.",
+      "steps": [
+        "Pick 15 minutes",
+        "Sing every word",
+        "Bonus points for hitting high notes"
+      ]
+    },
+    {
+      "id": 77,
+      "title": "The Family Newspaper",
+      "category": "written",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "9+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["paper", "pen"],
+      "ethics_score": 10,
+      "description": "Create a fake newspaper with absurd headlines about your family. 'DAD DISCOVERS NEW SOCK ARRANGEMENT'",
+      "steps": [
+        "Write headlines and short funny articles",
+        "Add a weather forecast for the kitchen",
+        "Slip under bedroom doors"
+      ]
+    },
+    {
+      "id": 78,
+      "title": "Pretend to Find a Genie",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["teapot or lamp"],
+      "ethics_score": 10,
+      "description": "Rub a teapot dramatically and pretend a genie has come out. Offer wishes to your family. The genie misunderstands every wish hilariously.",
+      "steps": [
+        "Rub a teapot",
+        "Speak as the genie",
+        "Whatever they wish for, give a silly wrong version"
+      ]
+    },
+    {
+      "id": 79,
+      "title": "Pasta Necklace Gift",
+      "category": "gift",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["dry pasta", "string"],
+      "ethics_score": 10,
+      "description": "Make a giant pasta necklace. Present it to a family member with extreme seriousness as if it's a royal honor.",
+      "steps": [
+        "String dry pasta on a string",
+        "Bow as you present it",
+        "Insist they wear it for one full meal"
+      ]
+    },
+    {
+      "id": 80,
+      "title": "Air Drumming Forever",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Air drum at extremely intense levels to whatever music is playing, even if it's quiet background music.",
+      "steps": [
+        "Wait for any music",
+        "Air drum like you're at a concert",
+        "Add air guitar at the chorus"
+      ]
+    },
+    {
+      "id": 81,
+      "title": "Chair Swap",
+      "category": "visual",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "before-meal",
+      "duration_minutes": 5,
+      "materials": ["dining chairs"],
+      "ethics_score": 9,
+      "description": "Swap everyone's usual seats at the dinner table before they sit down.",
+      "steps": [
+        "Move chairs to different positions",
+        "Or rearrange place settings",
+        "Watch them stand confused"
+      ]
+    },
+    {
+      "id": 82,
+      "title": "Talking to a Banana Phone",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["banana"],
+      "ethics_score": 10,
+      "description": "Hold a banana to your ear and have a serious phone conversation with it. Hand the banana to a family member: 'It's for you.'",
+      "steps": [
+        "Pick up a banana",
+        "Pretend to take a call",
+        "Pass the banana to someone with a serious nod"
+      ]
+    },
+    {
+      "id": 83,
+      "title": "I Speak A New Language",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "For 5 minutes, only speak in made-up gibberish. Act surprised that no one understands you.",
+      "steps": [
+        "Speak only in nonsense syllables",
+        "Look hurt when they don't understand",
+        "Reveal: 'Oh, you don't speak Floogle?'"
+      ]
+    },
+    {
+      "id": 84,
+      "title": "The Long-Awaited Surprise",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["box", "wrapping"],
+      "ethics_score": 10,
+      "description": "Build up huge excitement about a surprise inside a wrapped box. The reveal: a single grape.",
+      "steps": [
+        "Wrap a small box with one grape inside",
+        "Talk it up all morning",
+        "Reveal with maximum drama"
+      ]
+    },
+    {
+      "id": 85,
+      "title": "Backwards Sentences",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Say every sentence in reverse word order. 'Cereal more want I.' Insist this is the new family rule.",
+      "steps": [
+        "Speak only in reverse word order",
+        "Insist it's a new tradition",
+        "Drop it after 5 minutes"
+      ]
+    },
+    {
+      "id": 86,
+      "title": "Fake News Anchor",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["paper as fake script"],
+      "ethics_score": 10,
+      "description": "Become a serious news anchor reporting on what's happening in the house. 'Breaking news: dad has located the remote.'",
+      "steps": [
+        "Hold a paper as your script",
+        "Use a serious news voice",
+        "Report on every household event"
+      ]
+    },
+    {
+      "id": 87,
+      "title": "Sticky-Note Storm",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "while-away",
+      "duration_minutes": 15,
+      "materials": ["sticky notes (your own)"],
+      "ethics_score": 8,
+      "description": "Cover one item in their room (not everything) in sticky notes. Just their lamp, or just their mirror.",
+      "steps": [
+        "Pick ONE item to cover",
+        "Use only sticky notes (no permanent damage)",
+        "Help collect them after the reveal"
+      ]
+    },
+    {
+      "id": 88,
+      "title": "Pretend the Floor is Lava",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 15,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Refuse to step on the floor for 15 minutes. Hop from couch to chair to ottoman.",
+      "steps": [
+        "Announce solemnly: 'The floor is lava'",
+        "Move only by hopping on furniture",
+        "Beg family for rescue"
+      ]
+    },
+    {
+      "id": 89,
+      "title": "I Lost My Pencil (in My Hand)",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home", "school"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["pencil"],
+      "ethics_score": 10,
+      "description": "Hold a pencil in your hand and search frantically for it everywhere.",
+      "steps": [
+        "Hold pencil clearly visible in your hand",
+        "Loudly ask everyone where your pencil could be",
+        "Eventually 'discover' it"
+      ]
+    },
+    {
+      "id": 90,
+      "title": "Hat in a Hat",
+      "category": "outfit",
+      "target": ["self"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["multiple hats"],
+      "ethics_score": 10,
+      "description": "Wear five hats stacked on your head. Walk around acting normal.",
+      "steps": [
+        "Find every hat in the house",
+        "Wear them all at once",
+        "Refuse to acknowledge anything is unusual"
+      ]
+    },
+    {
+      "id": 91,
+      "title": "Pretend to Read Their Mind",
+      "category": "verbal",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Loudly announce what your sibling is 'thinking' - all silly things. 'You're thinking about how much you love broccoli.'",
+      "steps": [
+        "Stare intensely at your sibling",
+        "Proclaim: 'I sense you crave more chores!'",
+        "Get sillier each time"
+      ]
+    },
+    {
+      "id": 92,
+      "title": "Magnetic Hand",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "6+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Pretend your hand is magnetically attracted to your face. Fight it with the other hand.",
+      "steps": [
+        "Slowly pull your hand toward your face",
+        "Fight against it with your other hand",
+        "Lose the battle dramatically"
+      ]
+    },
+    {
+      "id": 93,
+      "title": "Wrong Lyrics All Day",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "any",
+      "duration_minutes": 30,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Sing the wrong lyrics to every song that comes on. With total confidence.",
+      "steps": [
+        "Listen to family playlist",
+        "Sing made-up wrong words",
+        "Insist those are the real lyrics"
+      ]
+    },
+    {
+      "id": 94,
+      "title": "I Am Now A Cat",
+      "category": "physical",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Be a cat for ten minutes. Only respond in meows. Sit on things. Knock a (soft, unbreakable) item off a table.",
+      "steps": [
+        "Crouch and meow",
+        "Slowly push a stuffed animal off the couch",
+        "Stare into space"
+      ]
+    },
+    {
+      "id": 95,
+      "title": "Hide All The Pens",
+      "category": "visual",
+      "target": ["parent"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "morning",
+      "duration_minutes": 10,
+      "materials": ["pens (your own)"],
+      "ethics_score": 7,
+      "description": "Hide every visible pen in one drawer (not lose them - just relocate). Reveal location within 30 minutes if needed.",
+      "steps": [
+        "Gather all loose pens",
+        "Stash them in one specific drawer",
+        "Tell parent the location if they actually need to write something"
+      ]
+    },
+    {
+      "id": 96,
+      "title": "Rate-Your-Day Survey",
+      "category": "written",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "evening",
+      "duration_minutes": 15,
+      "materials": ["paper", "pen"],
+      "ethics_score": 10,
+      "description": "Hand each family member a serious-looking customer satisfaction survey about their day. Include questions like 'rate your dinner conversation 1-10'.",
+      "steps": [
+        "Write a survey form",
+        "Include silly serious questions",
+        "Collect at the end of the night with great formality"
+      ]
+    },
+    {
+      "id": 97,
+      "title": "Wrap an Object in Foil",
+      "category": "visual",
+      "target": ["sibling"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "while-away",
+      "duration_minutes": 10,
+      "materials": ["aluminum foil"],
+      "ethics_score": 8,
+      "description": "Wrap one item from their room in aluminum foil. Just one - their pencil cup, their mouse, their water bottle.",
+      "steps": [
+        "Pick ONE non-electronic item",
+        "Wrap it neatly in foil",
+        "Help unwrap after they discover it"
+      ]
+    },
+    {
+      "id": 98,
+      "title": "The Time Travel Story",
+      "category": "verbal",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "8+",
+      "time_of_day": "any",
+      "duration_minutes": 5,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "Run in breathlessly and announce you've just come back from the future. Give absurd predictions like 'In 4 years, dogs will run the post office.'",
+      "steps": [
+        "Burst in panting",
+        "Share dramatic absurd 'future news'",
+        "Refuse to explain how you traveled"
+      ]
+    },
+    {
+      "id": 99,
+      "title": "Compliment Battle",
+      "category": "kindness",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "5+",
+      "time_of_day": "any",
+      "duration_minutes": 10,
+      "materials": ["nothing"],
+      "ethics_score": 10,
+      "description": "The reverse-prank classic. Ambush family members with overwhelming compliments until they smile.",
+      "steps": [
+        "Pick a target",
+        "Hit them with three rapid-fire compliments",
+        "Run before they can respond"
+      ]
+    },
+    {
+      "id": 100,
+      "title": "April Fool the Calendar",
+      "category": "written",
+      "target": ["family"],
+      "setting": ["home"],
+      "age_range": "7+",
+      "time_of_day": "morning",
+      "duration_minutes": 5,
+      "materials": ["calendar", "sticky note"],
+      "ethics_score": 10,
+      "description": "Stick a note on the family calendar marking today as a made-up holiday. 'NATIONAL WEAR-A-SOCK-ON-YOUR-HEAD DAY'",
+      "steps": [
+        "Pick a silly holiday",
+        "Write it on a sticky note",
+        "Add to today's date on the calendar",
+        "Insist on observing it"
+      ]
+    }
+  ],
+  "prank_calls": [
+    {
+      "id": 1,
+      "title": "The Lost Penguin Hotline",
+      "script": "Hello, this is Penguin Rescue Services. We're calling because we believe a penguin has been spotted in your backyard. Can you check?",
+      "reveal_after_seconds": 20,
+      "target": "family member who agreed to be pranked",
+      "ethics_score": 10
+    },
+    {
+      "id": 2,
+      "title": "The Refrigerator Inspector",
+      "script": "Good afternoon. This is the Refrigerator Inspection Bureau. We need to confirm: is your refrigerator running? ... Then you better go catch it!",
+      "reveal_after_seconds": 15,
+      "target": "family",
+      "ethics_score": 10
+    },
+    {
+      "id": 3,
+      "title": "Pizza Order Confusion",
+      "script": "Hi, I'd like to order one pizza. Toppings: just one single grape. Delivery time: between 4pm yesterday and never. Will that work?",
+      "reveal_after_seconds": 20,
+      "target": "family member",
+      "ethics_score": 10
+    }
+  ],
+  "moderation_notes": {
+    "rejected_categories": [
+      "Anything involving fake injuries or medical scares",
+      "Anything involving missing pets",
+      "Anything involving food someone else has to throw away",
+      "Anything that wastes water or makes a wet mess",
+      "Anything requiring deception that could damage trust",
+      "Anything involving strangers"
+    ],
+    "review_required_before_publishing": true
+  }
+}
