@@ -67,4 +67,13 @@ export const APPS = [
     href: "/dad-convincer/",
     status: "live",
   },
+  {
+    slug: "music-lab",
+    title: "Music Lab",
+    emoji: "🎹",
+    blurb:
+      "A pocket music studio — play piano, guitar or bass, pick chords with smart next-chord hints, build a beat on the 7-pad drum kit, hum into the mic, and record your voice over the top. (Rowan's idea.)",
+    href: "/music-lab/",
+    status: "live",
+  },
 ];
