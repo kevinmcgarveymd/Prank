@@ -76,4 +76,13 @@ export const APPS = [
     href: "/music-lab/",
     status: "live",
   },
+  {
+    slug: "lab",
+    title: "App Maker",
+    emoji: "🧪",
+    blurb:
+      "Answer a few quick questions — what you're making, what it's about, what you do in it — and the App Maker builds you a real, playable app on the spot. Big kids can just describe it in their own words.",
+    href: "/lab",
+    status: "live",
+  },
 ];
