@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WORLD PHRASEBOOK 🌍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #A0E7E5;
+    --ink: #1a1a1a;
+    --pop: #FF5964;
+    --cool: #38A3A5;
+    --warm: #FF9B42;
+    --card-bg: #fffdf6;
+    --shadow: 6px 6px 0 var(--ink);
+    --shadow-sm: 3px 3px 0 var(--ink);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 20px;
+    background-image:
+      radial-gradient(circle at 18% 25%, color-mix(in srgb, var(--pop) 22%, transparent) 0%, transparent 38%),
+      radial-gradient(circle at 82% 75%, color-mix(in srgb, var(--warm) 22%, transparent) 0%, transparent 40%);
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: 'Bungee', cursive;
+    font-size: 0.75rem;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 12px;
+  }
+  .back-link:hover { background: #f3f3f3; }
+
+  header {
+    text-align: center;
+    margin-bottom: 18px;
+    transform: rotate(-2deg);
+  }
+  h1 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: clamp(2rem, 7vw, 3.6rem);
+    line-height: 1;
+    color: var(--pop);
+    text-shadow: 4px 4px 0 var(--ink);
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    font-family: 'Bungee', cursive;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: var(--ink);
+  }
+
+  .lang-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding: 4px 2px 10px;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+  .lang-bar::-webkit-scrollbar { height: 4px; }
+  .lang-bar::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 4px; }
+  .lang {
+    flex-shrink: 0;
+    font-family: 'Bungee', cursive;
+    font-size: 0.72rem;
+    padding: 9px 13px;
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s, background 0.2s;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .lang:hover { background: #f3f3f3; }
+  .lang.active {
+    background: var(--ink);
+    color: var(--bg);
+    transform: translateY(-1px);
+    box-shadow: 4px 4px 0 var(--pop);
+  }
+
+  .add-panel {
+    background: var(--card-bg);
+    border: 4px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .add-label {
+    font-family: 'Bungee', cursive;
+    font-size: 0.85rem;
+    background: var(--ink);
+    color: var(--bg);
+    display: inline-block;
+    padding: 5px 14px;
+    margin-bottom: 12px;
+    transform: rotate(-1deg);
+  }
+  .add-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .phrase-input {
+    flex: 1 1 220px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    padding: 12px 14px;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    background: white;
+    color: var(--ink);
+    outline: none;
+    box-shadow: inset 3px 3px 0 rgba(0,0,0,0.06);
+  }
+  .phrase-input:focus {
+    border-color: var(--pop);
+    box-shadow: inset 3px 3px 0 rgba(0,0,0,0.06), 0 0 0 4px rgba(255,89,100,0.25);
+  }
+  .add-btn {
+    background: var(--pop);
+    color: white;
+    font-family: 'Bungee', cursive;
+    font-size: 0.9rem;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    padding: 12px 20px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .add-btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+  .add-btn:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
+
+  .cards {
+    display: grid;
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 4px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    padding: 16px 18px;
+    position: relative;
+  }
+  .card-emoji {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+  }
+  .card-en {
+    font-weight: 900;
+    font-size: 0.95rem;
+    opacity: 0.65;
+    margin-bottom: 8px;
+  }
+  .card-translation {
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    min-height: 1.4em;
+    color: var(--ink);
+    word-break: break-word;
+  }
+  .card-translation.thinking {
+    color: #888;
+    font-style: italic;
+    font-size: 1.05rem;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+  .card-translation.pop { animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  @keyframes pop {
+    0% { transform: scale(0.7); opacity: 0.3; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .mini-btn {
+    font-family: 'Bungee', cursive;
+    font-size: 0.7rem;
+    border: 3px solid var(--ink);
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background: white;
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
+    user-select: none;
+  }
+  .mini-btn:hover { background: #f3f3f3; transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
+  .mini-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .mini-btn.say { background: var(--cool); color: white; }
+  .mini-btn.copy.copied { background: #06D6A0; color: white; }
+  .mini-btn:disabled { opacity: 0.5; cursor: default; box-shadow: var(--shadow-sm); transform: none; }
+
+  .remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0.5;
+    line-height: 1;
+  }
+  .remove-btn:hover { opacity: 1; }
+
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .translate-all {
+    background: var(--warm);
+    color: var(--ink);
+    font-family: 'Bungee', cursive;
+    font-size: 0.95rem;
+    border: 4px solid var(--ink);
+    border-radius: 14px;
+    padding: 12px 24px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .translate-all:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+  .translate-all:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--ink); }
+  .translate-all:disabled { opacity: 0.6; cursor: wait; }
+
+  footer {
+    text-align: center;
+    margin-top: 24px;
+    font-family: 'Bungee', cursive;
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a href="/" class="back-link">← buildapps.fun</a>
+
+  <header>
+    <h1>WORLD<br>PHRASEBOOK</h1>
+    <p class="subtitle">🌍 SAY IT IN ANY LANGUAGE 🌍</p>
+  </header>
+
+  <div class="lang-bar" id="langBar">
+    <button class="lang active" data-lang="en">🇬🇧 EN</button>
+    <button class="lang" data-lang="es">🇪🇸 ES</button>
+    <button class="lang" data-lang="fr">🇫🇷 FR</button>
+    <button class="lang" data-lang="de">🇩🇪 DE</button>
+    <button class="lang" data-lang="it">🇮🇹 IT</button>
+    <button class="lang" data-lang="pt">🇧🇷 PT</button>
+    <button class="lang" data-lang="ja">🇯🇵 JA</button>
+    <button class="lang" data-lang="zh">🇨🇳 ZH</button>
+  </div>
+
+  <div class="add-panel">
+    <div class="add-label">✏️ ADD YOUR OWN PHRASE</div>
+    <div class="add-row">
+      <input
+        id="phraseInput"
+        class="phrase-input"
+        type="text"
+        maxlength="120"
+        placeholder="Type something fun to say…" />
+      <button id="addBtn" class="add-btn" type="button">➕ ADD</button>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button id="translateAll" class="translate-all" type="button">🌐 TRANSLATE EVERYTHING</button>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <footer>POWERED BY THE BUILDAPPS TRANSLATE BRAIN 🧠 • HAVE FUN!</footer>
+</div>
+
+<script>
+  // ---- Languages ------------------------------------------------------------
+  const SPEECH_LANG = {
+    en: "en-US", es: "es-ES", fr: "fr-FR", de: "de-DE",
+    it: "it-IT", pt: "pt-BR", ja: "ja-JP", zh: "zh-CN"
+  };
+  const LANG_LABEL = {
+    en: "English", es: "Spanish", fr: "French", de: "German",
+    it: "Italian", pt: "Portuguese", ja: "Japanese", zh: "Chinese"
+  };
+
+  let currentLang = "en";
+
+  // ---- Phrase model ---------------------------------------------------------
+  // Each phrase: { emoji, en, custom }
+  // translations cache key: `${id}|${lang}` -> string
+  const phrases = [
+    { emoji: "👋", en: "Hello, friend!" },
+    { emoji: "😄", en: "My name is awesome." },
+    { emoji: "🍕", en: "I would like more pizza, please." },
+    { emoji: "🙏", en: "Thank you so much!" },
+    { emoji: "🐶", en: "Where is the puppy?" },
+    { emoji: "⭐", en: "You are my best friend." },
+    { emoji: "🚀", en: "Let's go on an adventure!" },
+    { emoji: "😴", en: "I am not tired at all." }
+  ];
+
+  // cache[lang] = array aligned with phrases (string translations)
+  const cache = { en: phrases.map(p => p.en) };
+
+  const cardsEl = document.getElementById("cards");
+  const langBtns = document.querySelectorAll(".lang");
+  const translateAllBtn = document.getElementById("translateAll");
+
+  // ---- Rendering ------------------------------------------------------------
+  function translationFor(i) {
+    const arr = cache[currentLang];
+    if (arr && typeof arr[i] === "string") return arr[i];
+    return null; // not translated yet
+  }
+
+  function render() {
+    cardsEl.innerHTML = "";
+    phrases.forEach((p, i) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const removeBtn = document.createElement("button");
+      removeBtn.className = "remove-btn";
+      removeBtn.textContent = "✕";
+      removeBtn.title = "Remove phrase";
+      removeBtn.addEventListener("click", () => removePhrase(i));
+      card.appendChild(removeBtn);
+
+      const emoji = document.createElement("div");
+      emoji.className = "card-emoji";
+      emoji.textContent = p.emoji;
+      card.appendChild(emoji);
+
+      const en = document.createElement("div");
+      en.className = "card-en";
+      en.textContent = p.en;
+      card.appendChild(en);
+
+      const tr = document.createElement("div");
+      tr.className = "card-translation";
+      const t = translationFor(i);
+      if (currentLang === "en") {
+        tr.textContent = p.en;
+      } else if (t !== null) {
+        tr.textContent = t;
+        tr.classList.add("pop");
+      } else {
+        tr.textContent = "Tap “Translate everything” to see it…";
+        tr.style.opacity = "0.5";
+        tr.style.fontSize = "1rem";
+      }
+      card.appendChild(tr);
+
+      const actions = document.createElement("div");
+      actions.className = "card-actions";
+
+      const sayBtn = document.createElement("button");
+      sayBtn.className = "mini-btn say";
+      sayBtn.textContent = "🔊 SAY IT";
+      const sayText = currentLang === "en" ? p.en : t;
+      sayBtn.disabled = !sayText;
+      sayBtn.addEventListener("click", () => speak(sayText, currentLang));
+      actions.appendChild(sayBtn);
+
+      const copyBtn = document.createElement("button");
+      copyBtn.className = "mini-btn copy";
+      copyBtn.textContent = "📋 COPY";
+      copyBtn.disabled = !sayText;
+      copyBtn.addEventListener("click", () => copyText(copyBtn, sayText));
+      actions.appendChild(copyBtn);
+
+      card.appendChild(actions);
+      cardsEl.appendChild(card);
+    });
+  }
+
+  // ---- Speech ---------------------------------------------------------------
+  function speak(text, lang) {
+    if (!text || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = SPEECH_LANG[lang] || "en-US";
+    u.rate = 0.95;
+    const voices = window.speechSynthesis.getVoices();
+    const match = voices.find(v => v.lang && v.lang.toLowerCase().startsWith(lang));
+    if (match) u.voice = match;
+    window.speechSynthesis.speak(u);
+  }
+  // Warm up voices list (some browsers load async)
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+  }
+
+  // ---- Copy -----------------------------------------------------------------
+  async function copyText(btn, text) {
+    if (!text) return;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch {}
+      ta.remove();
+    }
+    btn.classList.add("copied");
+    btn.textContent = "✓ COPIED";
+    setTimeout(() => {
+      btn.classList.remove("copied");
+      btn.textContent = "📋 COPY";
+    }, 1200);
+  }
+
+  // ---- Add / remove phrases -------------------------------------------------
+  const phraseInput = document.getElementById("phraseInput");
+  const addBtn = document.getElementById("addBtn");
+
+  function addPhrase() {
+    const txt = phraseInput.value.trim();
+    if (!txt) return;
+    phrases.push({ emoji: "💬", en: txt, custom: true });
+    // Keep English cache aligned; clear other languages so they re-translate.
+    cache.en.push(txt);
+    Object.keys(cache).forEach(l => { if (l !== "en") delete cache[l]; });
+    phraseInput.value = "";
+    render();
+  }
+  addBtn.addEventListener("click", addPhrase);
+  phraseInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") { e.preventDefault(); addPhrase(); }
+  });
+
+  function removePhrase(i) {
+    phrases.splice(i, 1);
+    Object.keys(cache).forEach(l => {
+      if (Array.isArray(cache[l])) cache[l].splice(i, 1);
+    });
+    render();
+  }
+
+  // ---- Language switching ---------------------------------------------------
+  langBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      langBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentLang = btn.dataset.lang;
+      render();
+      if (currentLang !== "en" && !cache[currentLang]) {
+        translateCurrent();
+      }
+    });
+  });
+
+  // ---- Translation via /api/translate --------------------------------------
+  let translating = false;
+
+  function setThinking() {
+    cardsEl.querySelectorAll(".card-translation").forEach(el => {
+      el.classList.add("thinking");
+      el.classList.remove("pop");
+      el.style.opacity = "";
+      el.style.fontSize = "";
+      el.textContent = "✨ translating…";
+    });
+  }
+
+  async function translateCurrent() {
+    if (currentLang === "en") { render(); return; }
+    if (translating) return;
+    translating = true;
+    translateAllBtn.disabled = true;
+    setThinking();
+
+    const items = phrases.map(p => p.en);
+    try {
+      const r = await fetch("/api/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lang: currentLang, items })
+      });
+      if (!r.ok) throw new Error("API error " + r.status);
+      const data = await r.json();
+      if (!Array.isArray(data.items) || data.items.length !== items.length) {
+        throw new Error("bad response");
+      }
+      cache[currentLang] = data.items;
+      render();
+    } catch (e) {
+      console.error(e);
+      cardsEl.querySelectorAll(".card-translation").forEach(el => {
+        el.classList.remove("thinking");
+        el.textContent = "🛰️ Couldn't reach the translate brain — tap to retry!";
+        el.style.fontSize = "1rem";
+        el.style.opacity = "0.7";
+      });
+    } finally {
+      translating = false;
+      translateAllBtn.disabled = false;
+    }
+  }
+
+  translateAllBtn.addEventListener("click", () => {
+    // Force a fresh translation for the current language.
+    if (currentLang === "en") {
+      // Nudge the user toward a real language with a quick flag flash.
+      const es = document.querySelector('.lang[data-lang="es"]');
+      langBtns.forEach(b => b.classList.remove("active"));
+      es.classList.add("active");
+      currentLang = "es";
+    }
+    delete cache[currentLang];
+    translateCurrent();
+  });
+
+  // ---- Init -----------------------------------------------------------------
+  render();
+</script>
+
+</body>
+</html>
