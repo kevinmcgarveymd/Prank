@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Signal — pain point to MVP</title>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.25.6/babel.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1414;--panel:#151d1d;--panel2:#1b2525;--line:#243131;
+    --ink:#e6efeb;--mute:#7c948c;--mint:#54e8a8;--amber:#e8c454;--rust:#e87a54;
+    --mono:'SFMono-Regular',ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:48px 24px 96px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);margin:0 0 10px}
+  h1{font-size:34px;font-weight:600;letter-spacing:-.02em;margin:0 0 8px}
+  .sub{color:var(--mute);font-size:15px;margin:0 0 32px;max-width:64ch;line-height:1.55}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
+  input[type=text]{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;
+    padding:13px 15px;font-family:var(--mono);font-size:15px}
+  input[type=text]:focus{outline:2px solid var(--mint);outline-offset:1px;border-color:transparent}
+  .controls{display:flex;gap:22px;margin:18px 0 4px;flex-wrap:wrap}
+  .ctl{font-size:12px;min-width:140px}
+  .ctl output{font-family:var(--mono);color:var(--ink);float:right}
+  input[type=range]{width:100%;accent-color:var(--mint)}
+  .row{display:flex;gap:12px;align-items:center;margin-top:20px;flex-wrap:wrap}
+  button{font-family:var(--mono);font-size:13px;letter-spacing:.04em;cursor:pointer;border-radius:9px;
+    padding:11px 18px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);transition:.15s}
+  button:hover{border-color:var(--mint)}
+  button.primary{background:var(--mint);color:#06231a;border-color:var(--mint);font-weight:600}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .hint{color:var(--mute);font-size:12.5px;margin-left:auto}
+  .statusbar{display:flex;gap:10px;align-items:center;margin:26px 0 6px;font-family:var(--mono);font-size:12px;color:var(--mute);flex-wrap:wrap}
+  .pill{border:1px solid var(--line);border-radius:20px;padding:4px 12px}
+  .pill.ai{border-color:var(--mint);color:var(--mint)}
+  .idea{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-top:16px;overflow:hidden}
+  .idea-head{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer}
+  .idea-head:hover{background:var(--panel2)}
+  .badge{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+  .b-green{background:var(--mint);box-shadow:0 0 10px var(--mint)}
+  .b-amber{background:var(--amber)} .b-rust{background:var(--rust)}
+  .idea-kw{font-weight:600;font-size:16px;flex:1}
+  .idea-score{font-family:var(--mono);font-size:18px;font-weight:700}
+  .idea-metrics{font-family:var(--mono);font-size:11px;color:var(--mute);margin-right:6px}
+  .chev{color:var(--mute);transition:.2s;display:inline-block}
+  .open .chev{transform:rotate(90deg)}
+  .ibody{padding:0 22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media(max-width:720px){.ibody{grid-template-columns:1fr}}
+  h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mint);margin:6px 0 12px}
+  dl{margin:0} dt{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-top:12px}
+  dd{margin:3px 0 0;font-size:14px;line-height:1.5}
+  .screen{border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin-bottom:10px;background:var(--bg)}
+  .screen h5{margin:0 0 7px;font-size:13px;font-family:var(--mono)}
+  .screen ul{margin:0;padding-left:18px;font-size:12.5px;color:var(--mute);line-height:1.6}
+  .src{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--mute)}
+  .src.ai{color:var(--mint);border-color:var(--mint)}
+  .empty{color:var(--mute);text-align:center;padding:60px 0;font-size:14px}
+  .err{color:var(--rust);font-family:var(--mono);font-size:12px;margin-top:14px}
+  .disclaimer{color:var(--mute);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:16px;line-height:1.6}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState}=React;
+const API=(location.protocol==='file:'?'http://localhost:8000':'');
+const BADGE={rising_low_comp:'b-green',mixed:'b-amber',saturated_or_flat:'b-rust'};
+
+function Idea({idea,open,toggle}){
+  const o=idea.opportunity,g=idea.generation,bm=g.business_model,wf=g.wireframe;
+  return (<div className={'idea'+(open?' open':'')}>
+    <div className="idea-head" onClick={toggle}>
+      <span className={'badge '+BADGE[o.badge]}></span>
+      <span className="idea-kw">{o.keyword}</span>
+      <span className="idea-metrics">m{o.momentum} · d{o.rising} · s{o.volume}</span>
+      <span className="idea-score">{o.score}</span>
+      <span className="chev">▶</span>
+    </div>
+    {open && <div className="ibody">
+      <div>
+        <h4>Business model <span className={'src'+(g.source==='ai'?' ai':'')}>{g.source}</span></h4>
+        <dl>
+          <dt>Problem</dt><dd>{bm.problem}</dd>
+          <dt>Segment</dt><dd>{bm.segment}</dd>
+          <dt>Value proposition</dt><dd>{bm.value_prop}</dd>
+          <dt>Solution</dt><dd>{bm.solution}</dd>
+          <dt>Revenue</dt><dd>{bm.revenue}</dd>
+          <dt>Channels</dt><dd>{bm.channels}</dd>
+          <dt>Moat</dt><dd>{bm.moat}</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>MVP wireframe — {wf.title}</h4>
+        {wf.screens.map((s,i)=>(<div className="screen" key={i}>
+          <h5>{s.name}</h5>
+          <ul>{s.elements.map((e,j)=><li key={j}>{e}</li>)}</ul>
+        </div>))}
+      </div>
+    </div>}
+  </div>);
+}
+
+function App(){
+  const [seed,setSeed]=useState('ecommerce returns');
+  const [topN,setTopN]=useState(4);
+  const [maxP,setMaxP]=useState(10);
+  const [data,setData]=useState(null);
+  const [openIdx,setOpenIdx]=useState(0);
+  const [loading,setLoading]=useState(false);
+  const [err,setErr]=useState('');
+
+  async function run(){
+    setLoading(true);setErr('');setData(null);
+    try{
+      const r=await fetch(API+'/pipeline',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({seed,generate_top:topN,max_points:maxP})});
+      setData(await r.json());setOpenIdx(0);
+    }catch(e){setErr('Could not reach the API. Is the backend running on :8000?');}
+    setLoading(false);
+  }
+  function exportReport(){ window.open(API+'/export','_blank'); }
+
+  return (<div className="wrap">
+    <p className="eyebrow">Signal · pipeline</p>
+    <h1>From a seed term to MVP concepts.</h1>
+    <p className="sub">Enter one broad term. Signal discovers rising sub-niches from Google Trends,
+      scores each for momentum and competition, then drafts a business model and MVP wireframe for the top ones.
+      Output is a starting point for your judgment — directional leads, not validated ideas.</p>
+
+    <div className="panel">
+      <label htmlFor="seed">Seed term</label>
+      <input id="seed" type="text" value={seed} onChange={e=>setSeed(e.target.value)}
+        placeholder="e.g. fitness coaching, healthcare scheduling"/>
+      <div className="controls">
+        <div className="ctl"><label>Niches to discover<output>{maxP}</output></label>
+          <input type="range" min="4" max="16" value={maxP} onChange={e=>setMaxP(+e.target.value)}/></div>
+        <div className="ctl"><label>Ideas to generate<output>{topN}</output></label>
+          <input type="range" min="1" max="8" value={topN} onChange={e=>setTopN(+e.target.value)}/></div>
+      </div>
+      <div className="row">
+        <button className="primary" onClick={run} disabled={loading}>{loading?'Running pipeline…':'Run'}</button>
+        {data && <button onClick={exportReport}>Export report ↗</button>}
+        <span className="hint">First run is slow (live Trends fetch per niche). Repeats cache ~36h.</span>
+      </div>
+      {err && <p className="err">{err}</p>}
+    </div>
+
+    {data && <>
+      <div className="statusbar">
+        <span className="pill">{data.all_scored.length} niches scored</span>
+        <span className="pill">{data.ideas.length} ideas generated</span>
+        <span className={'pill'+(data.ai_used?' ai':'')}>{data.ai_used?'AI generated':'template generated'}</span>
+      </div>
+      {data.ideas.map((idea,i)=>(
+        <Idea key={i} idea={idea} open={openIdx===i} toggle={()=>setOpenIdx(openIdx===i?-1:i)}/>
+      ))}
+      <p className="disclaimer">Signal reads Google Trends interest, which is relative (0–100), not absolute search
+        volume, and approximates competition from related-search density rather than measuring it. Use these as leads
+        to investigate, not conclusions. Validate demand and competition independently before building.</p>
+    </>}
+    {!data && !loading && <p className="empty">Enter a seed term and hit Run.</p>}
+    {loading && <p className="empty">Discovering niches and scoring… this can take a minute on first run.</p>}
+  </div>);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# Local data / cache
+*.db
+backend/cache.db
+
+# Env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build output for deploy
+backend/static/
